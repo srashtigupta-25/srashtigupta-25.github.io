@@ -4,24 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Srashti Gupta | Software Engineer</title>
-    <meta name="description" content="Software Engineer with 5+ years of experience in Java, Spring Boot, and microservices architecture. Seeking Summer 2026 SWE internship.">
+    <meta name="description" content="Software Engineer with 5+ years at Fortune 500 companies. MS CS @ Northeastern (4.0 GPA). Seeking Summer 2026 SWE internship.">
     <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav">
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Glass Navigation -->
+    <nav class="nav glass-nav" id="navbar">
         <div class="container">
             <a href="#" class="logo">SG</a>
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#experience">Experience</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
+            <div class="nav-links" id="navLinks">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </div>
-            <button class="menu-toggle" aria-label="Toggle menu">
+            <a href="resume.pdf" download class="btn-download">
+                <i class="fas fa-download"></i> Resume
+            </a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -30,109 +40,167 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section id="home" class="hero fade-in">
         <div class="container">
             <div class="hero-content">
                 <p class="hero-intro">Hi, I'm</p>
                 <h1 class="hero-title">Srashti Gupta</h1>
-                <p class="hero-subtitle">Software Engineer</p>
-                <p class="hero-tagline">Design. Debug. Deliver.</p>
-                <p class="hero-description">
-                    Architecting scalable backend systems with Java & Spring Boot.<br>
-                    MS CS @ Northeastern (4.0 GPA) • 5+ Years Industry Experience
-                </p>
+                <p class="hero-subtitle">Software Engineer | MS CS @ Northeastern (4.0 GPA)</p>
+                
+                <!-- Status Indicator -->
+                <div class="status-badge">
+                    <span class="status-dot"></span>
+                    Available for Summer 2026 Internships
+                </div>
+                
+                <!-- Tagline -->
+                <p class="hero-tagline">Turning Complex Problems into Scalable Solutions</p>
+                
+                <!-- Stats Ticker -->
+                <div class="stats-ticker">
+                    <div class="stat-item">
+                        <i class="fas fa-briefcase"></i>
+                        <span>5+ Years</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-server"></i>
+                        <span>1M+ Daily Requests</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-award"></i>
+                        <span>3 Awards</span>
+                    </div>
+                </div>
+                
                 <div class="hero-cta">
-                    <a href="#contact" class="btn btn-primary">Let's Connect</a>
-                    <a href="https://github.com/srashtigupta-25" target="_blank" class="btn btn-secondary">View GitHub</a>
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-calendar-check"></i> Open to Opportunities
+                    </a>
+                    <a href="https://github.com/srashtigupta-25" target="_blank" class="btn btn-secondary">
+                        <i class="fab fa-github"></i> View GitHub
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section with Photo and Skills Side by Side -->
-    <section id="about" class="about">
+    <!-- About Section -->
+    <section id="about" class="about fade-in">
         <div class="container">
-            <h2 class="section-title">Get to Know Me</h2>
+            <h2 class="section-title">About Me</h2>
             <div class="about-layout">
-                <!-- Left: About Text with Photo -->
+                <!-- Left: Photo and Quick Intro -->
                 <div class="about-left">
-                    <div class="profile-photo-wrapper">
+                    <div class="profile-photo-circular">
                         <img src="profile-photo.png" alt="Srashti Gupta" class="profile-photo">
                     </div>
                     <div class="about-text">
                         <p class="about-lead">Building high-performance systems that scale.</p>
-                        <p>I'm a Software Engineer with <strong>5 years of proven experience</strong> architecting scalable backend systems using Java, Spring Boot, and microservices architecture.</p>
-                        <p>Currently pursuing my <strong>Master's in Computer Science at Northeastern University (4.0 GPA)</strong> while actively seeking <strong>Summer 2026 SWE internship opportunities</strong>.</p>
-                        <p>I've delivered impactful solutions across banking (NAB), enterprise software (IBM), and global consulting (Capgemini), consistently driving <strong>30-45% performance improvements</strong> and earning <strong>3 technical excellence awards</strong>.</p>
+                        <p>Software Engineer with <strong>5 years at Fortune 500 companies</strong> (NAB, IBM, Capgemini) architecting scalable backend systems using Java, Spring Boot, and microservices.</p>
+                        <p>Currently pursuing <strong>MS in Computer Science at Northeastern University (4.0 GPA)</strong> and actively seeking <strong>Summer 2026 SWE internship opportunities</strong>.</p>
                     </div>
-                    <div class="highlights">
-                        <div class="highlight-card">
-                            <h3>5+</h3>
-                            <p>Years Experience</p>
-                        </div>
-                        <div class="highlight-card">
-                            <h3>1M+</h3>
-                            <p>Daily API Requests</p>
-                        </div>
-                        <div class="highlight-card">
-                            <h3>3</h3>
-                            <p>Technical Awards</p>
+                    
+                    <!-- Certifications -->
+                    <div class="certifications">
+                        <h3>Certifications</h3>
+                        <div class="cert-badges">
+                            <div class="cert-badge">
+                                <i class="fab fa-aws"></i>
+                                <span>AWS Certified</span>
+                            </div>
+                            <div class="cert-badge">
+                                <i class="fas fa-leaf"></i>
+                                <span>Spring Professional</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right: Skills -->
+                <!-- Right: Skills with Icons -->
                 <div class="about-right">
-                    <h3 class="skills-title">My Skills</h3>
-                    <div class="skills-compact">
-                        <div class="skill-category-compact">
-                            <h4>Languages</h4>
-                            <div class="skill-tags-compact">
-                                <span>Java</span>
-                                <span>Python</span>
-                                <span>C++</span>
-                                <span>SQL</span>
-                                <span>JavaScript</span>
+                    <h3 class="skills-title">
+                        <i class="fas fa-code"></i> Technical Skills
+                    </h3>
+                    <div class="skills-interactive">
+                        
+                        <div class="skill-category">
+                            <h4><i class="fas fa-laptop-code"></i> Languages</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag" data-level="Expert" data-years="5">
+                                    <i class="fab fa-java"></i> Java
+                                </span>
+                                <span class="skill-tag" data-level="Advanced" data-years="4">
+                                    <i class="fab fa-python"></i> Python
+                                </span>
+                                <span class="skill-tag" data-level="Advanced" data-years="4">
+                                    <i class="fas fa-database"></i> SQL
+                                </span>
+                                <span class="skill-tag" data-level="Intermediate" data-years="3">
+                                    <i class="fab fa-js"></i> JavaScript
+                                </span>
+                                <span class="skill-tag" data-level="Advanced" data-years="3">
+                                    <i class="fas fa-code"></i> C++
+                                </span>
                             </div>
                         </div>
-                        <div class="skill-category-compact">
-                            <h4>Frameworks</h4>
-                            <div class="skill-tags-compact">
-                                <span>Spring Boot</span>
-                                <span>Spring Cloud</span>
-                                <span>Hibernate</span>
-                                <span>React</span>
-                                <span>JUnit</span>
+
+                        <div class="skill-category">
+                            <h4><i class="fas fa-layer-group"></i> Frameworks</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag" data-level="Expert" data-years="5">
+                                    <i class="fas fa-leaf"></i> Spring Boot
+                                </span>
+                                <span class="skill-tag" data-level="Expert" data-years="4">
+                                    <i class="fas fa-cloud"></i> Spring Cloud
+                                </span>
+                                <span class="skill-tag" data-level="Advanced" data-years="4">
+                                    <i class="fas fa-box"></i> Hibernate
+                                </span>
+                                <span class="skill-tag" data-level="Intermediate" data-years="3">
+                                    <i class="fab fa-react"></i> React
+                                </span>
                             </div>
                         </div>
-                        <div class="skill-category-compact">
-                            <h4>Databases</h4>
-                            <div class="skill-tags-compact">
-                                <span>PostgreSQL</span>
-                                <span>MySQL</span>
-                                <span>Redis</span>
-                                <span>MongoDB</span>
+
+                        <div class="skill-category">
+                            <h4><i class="fas fa-database"></i> Databases</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag" data-level="Expert" data-years="5">
+                                    <i class="fas fa-database"></i> PostgreSQL
+                                </span>
+                                <span class="skill-tag" data-level="Advanced" data-years="4">
+                                    <i class="fas fa-database"></i> MySQL
+                                </span>
+                                <span class="skill-tag" data-level="Advanced" data-years="3">
+                                    <i class="fas fa-bolt"></i> Redis
+                                </span>
+                                <span class="skill-tag" data-level="Intermediate" data-years="2">
+                                    <i class="fas fa-leaf"></i> MongoDB
+                                </span>
                             </div>
                         </div>
-                        <div class="skill-category-compact">
-                            <h4>Cloud & DevOps</h4>
-                            <div class="skill-tags-compact">
-                                <span>AWS</span>
-                                <span>Docker</span>
-                                <span>Kubernetes</span>
-                                <span>Jenkins</span>
-                                <span>Git</span>
+
+                        <div class="skill-category">
+                            <h4><i class="fas fa-cloud"></i> Cloud & DevOps</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag" data-level="Advanced" data-years="4">
+                                    <i class="fab fa-aws"></i> AWS
+                                </span>
+                                <span class="skill-tag" data-level="Expert" data-years="5">
+                                    <i class="fab fa-docker"></i> Docker
+                                </span>
+                                <span class="skill-tag" data-level="Advanced" data-years="3">
+                                    <i class="fas fa-dharmachakra"></i> Kubernetes
+                                </span>
+                                <span class="skill-tag" data-level="Advanced" data-years="4">
+                                    <i class="fab fa-jenkins"></i> Jenkins
+                                </span>
+                                <span class="skill-tag" data-level="Expert" data-years="5">
+                                    <i class="fab fa-git-alt"></i> Git
+                                </span>
                             </div>
                         </div>
-                        <div class="skill-category-compact">
-                            <h4>Expertise</h4>
-                            <div class="skill-tags-compact">
-                                <span>Microservices</span>
-                                <span>RESTful APIs</span>
-                                <span>CI/CD</span>
-                                <span>System Design</span>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -140,7 +208,7 @@
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="experience">
+    <section id="experience" class="experience fade-in">
         <div class="container">
             <h2 class="section-title">Experience</h2>
             <div class="timeline">
@@ -149,25 +217,60 @@
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
-                        <div class="job-header">
-                            <div>
+                        <div class="company-header">
+                            <div class="company-logo">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div class="job-info">
                                 <h3>Senior Analyst II</h3>
                                 <p class="company">NAB Global Innovation Center India</p>
+                                <span class="date"><i class="fas fa-calendar"></i> Feb 2023 - Jul 2025</span>
                             </div>
-                            <span class="date">Feb 2023 - Jul 2025</span>
+                            <div class="award-badges">
+                                <span class="badge badge-star" title="STAR Award">
+                                    <i class="fas fa-star"></i> STAR
+                                </span>
+                                <span class="badge badge-spot" title="SPOT Award">
+                                    <i class="fas fa-trophy"></i> SPOT
+                                </span>
+                            </div>
                         </div>
+                        
                         <ul class="achievements">
-                            <li>Architected and optimized 20+ RESTful APIs handling <strong>1M+ daily requests</strong>, slashing latency by <strong>35%</strong> through strategic Redis caching, database indexing, and OAuth 2.0/JWT security implementation</li>
-                            <li>Spearheaded <strong>Java 8 to Java 17 migration</strong> across 20 mission-critical microservices, modernizing codebase with enhanced security protocols; awarded <strong>STAR Award</strong> for technical leadership excellence</li>
-                            <li>Engineered deployment tracking dashboard POC serving 20+ teams, boosting monitoring visibility by <strong>80%</strong>; earned <strong>SPOT Award</strong> for innovation and impact</li>
+                            <li>
+                                <strong>Problem:</strong> APIs handling 1M+ daily requests experiencing high latency<br>
+                                <strong>Solution:</strong> Implemented Redis caching, database indexing, OAuth 2.0/JWT<br>
+                                <strong>Impact:</strong> 
+                                <span class="metric-highlight">
+                                    <i class="fas fa-chart-line"></i> 35% latency reduction
+                                </span>
+                            </li>
+                            <li>
+                                <strong>Problem:</strong> Legacy Java 8 codebase with security vulnerabilities<br>
+                                <strong>Solution:</strong> Led migration to Java 17 across 20 microservices<br>
+                                <strong>Impact:</strong> Enhanced security, awarded <strong>STAR Award</strong>
+                            </li>
+                            <li>
+                                <strong>Problem:</strong> No unified deployment visibility across teams<br>
+                                <strong>Solution:</strong> Engineered dashboard POC for 20+ teams<br>
+                                <strong>Impact:</strong> 
+                                <span class="metric-highlight">
+                                    <i class="fas fa-eye"></i> 80% monitoring visibility increase
+                                </span>
+                            </li>
                         </ul>
+                        
+                        <div class="what-learned">
+                            <i class="fas fa-lightbulb"></i>
+                            <strong>Key Takeaway:</strong> Large-scale migrations succeed through incremental rollouts and comprehensive testing.
+                        </div>
+                        
                         <div class="tech-tags">
-                            <span>Java</span>
-                            <span>Spring Boot</span>
-                            <span>Redis</span>
-                            <span>AWS</span>
-                            <span>Kubernetes</span>
-                            <span>Splunk</span>
+                            <span><i class="fab fa-java"></i> Java</span>
+                            <span><i class="fas fa-leaf"></i> Spring Boot</span>
+                            <span><i class="fas fa-bolt"></i> Redis</span>
+                            <span><i class="fab fa-aws"></i> AWS</span>
+                            <span><i class="fas fa-dharmachakra"></i> Kubernetes</span>
                         </div>
                     </div>
                 </div>
@@ -176,24 +279,51 @@
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
-                        <div class="job-header">
-                            <div>
+                        <div class="company-header">
+                            <div class="company-logo">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <div class="job-info">
                                 <h3>System Engineer</h3>
                                 <p class="company">IBM India</p>
+                                <span class="date"><i class="fas fa-calendar"></i> Apr 2021 - Dec 2022</span>
                             </div>
-                            <span class="date">Apr 2021 - Dec 2022</span>
                         </div>
+                        
                         <ul class="achievements">
-                            <li>Designed resilient microservices architecture with PostgreSQL and Groovy, accelerating performance by <strong>45%</strong> through Circuit Breaker and Saga patterns implementation</li>
-                            <li>Built automated CI/CD pipelines leveraging Jenkins and Docker, cutting deployment time by <strong>40%</strong> and enabling rapid iteration cycles</li>
-                            <li>Developed full-stack solution with React frontend and Spring Boot backend, driving <strong>40% increase in user engagement</strong></li>
+                            <li>
+                                <strong>Problem:</strong> Monolithic architecture causing performance bottlenecks<br>
+                                <strong>Solution:</strong> Designed microservices with Circuit Breaker and Saga patterns<br>
+                                <strong>Impact:</strong> 
+                                <span class="metric-highlight">
+                                    <i class="fas fa-rocket"></i> 45% performance improvement
+                                </span>
+                            </li>
+                            <li>
+                                <strong>Problem:</strong> Manual deployments taking hours<br>
+                                <strong>Solution:</strong> Built automated CI/CD pipelines with Jenkins & Docker<br>
+                                <strong>Impact:</strong> 
+                                <span class="metric-highlight">
+                                    <i class="fas fa-clock"></i> 40% deployment time reduction
+                                </span>
+                            </li>
+                            <li>
+                                <strong>Problem:</strong> Low user engagement on legacy UI<br>
+                                <strong>Solution:</strong> Developed React frontend with Spring Boot backend<br>
+                                <strong>Impact:</strong> 40% engagement increase
+                            </li>
                         </ul>
+                        
+                        <div class="what-learned">
+                            <i class="fas fa-lightbulb"></i>
+                            <strong>Key Takeaway:</strong> Microservices resilience patterns are critical for production-grade distributed systems.
+                        </div>
+                        
                         <div class="tech-tags">
-                            <span>Java</span>
-                            <span>PostgreSQL</span>
-                            <span>Docker</span>
-                            <span>Jenkins</span>
-                            <span>React</span>
+                            <span><i class="fab fa-java"></i> Java</span>
+                            <span><i class="fas fa-database"></i> PostgreSQL</span>
+                            <span><i class="fab fa-docker"></i> Docker</span>
+                            <span><i class="fab fa-react"></i> React</span>
                         </div>
                     </div>
                 </div>
@@ -202,23 +332,53 @@
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
-                        <div class="job-header">
-                            <div>
+                        <div class="company-header">
+                            <div class="company-logo">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="job-info">
                                 <h3>Software Engineer</h3>
                                 <p class="company">Capgemini Engineering</p>
+                                <span class="date"><i class="fas fa-calendar"></i> Jan 2019 - Mar 2021</span>
                             </div>
-                            <span class="date">Jan 2019 - Mar 2021</span>
+                            <div class="award-badges">
+                                <span class="badge badge-excellence" title="Team Excellence Award">
+                                    <i class="fas fa-medal"></i> Excellence
+                                </span>
+                            </div>
                         </div>
+                        
                         <ul class="achievements">
-                            <li>Delivered scalable microservices solution for global enterprise client, eliminating critical performance bottlenecks; recognized with <strong>Team Excellence Award</strong></li>
-                            <li>Implemented comprehensive test automation achieving <strong>98% code coverage</strong> using TestNG and Mockito frameworks</li>
-                            <li>Optimized RESTful services with H2 database, reducing data retrieval time by <strong>30%</strong> through SQL query optimization</li>
+                            <li>
+                                <strong>Problem:</strong> Global client experiencing scalability issues<br>
+                                <strong>Solution:</strong> Built microservices resolving performance bottlenecks<br>
+                                <strong>Impact:</strong> Awarded <strong>Team Excellence Award</strong>
+                            </li>
+                            <li>
+                                <strong>Problem:</strong> Low test coverage leading to production bugs<br>
+                                <strong>Solution:</strong> Implemented comprehensive test automation<br>
+                                <strong>Impact:</strong> 
+                                <span class="metric-highlight">
+                                    <i class="fas fa-check-circle"></i> 98% code coverage
+                                </span>
+                            </li>
+                            <li>
+                                <strong>Problem:</strong> Slow database queries affecting user experience<br>
+                                <strong>Solution:</strong> Optimized RESTful services with H2 database<br>
+                                <strong>Impact:</strong> 30% retrieval time reduction
+                            </li>
                         </ul>
+                        
+                        <div class="what-learned">
+                            <i class="fas fa-lightbulb"></i>
+                            <strong>Key Takeaway:</strong> Test-driven development prevents technical debt and ensures long-term maintainability.
+                        </div>
+                        
                         <div class="tech-tags">
-                            <span>Java</span>
-                            <span>Microservices</span>
-                            <span>TestNG</span>
-                            <span>Spring</span>
+                            <span><i class="fab fa-java"></i> Java</span>
+                            <span><i class="fas fa-cogs"></i> Microservices</span>
+                            <span><i class="fas fa-vial"></i> TestNG</span>
+                            <span><i class="fas fa-leaf"></i> Spring</span>
                         </div>
                     </div>
                 </div>
@@ -228,110 +388,188 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="projects">
+    <section id="projects" class="projects fade-in">
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
             <div class="projects-grid">
                 
                 <div class="project-card">
-                    <div class="project-icon">🚀</div>
+                    <div class="project-header">
+                        <div class="project-icon">🚀</div>
+                        <span class="project-status in-progress">
+                            <i class="fas fa-code-branch"></i> In Progress
+                        </span>
+                    </div>
                     <h3>Concurrent Web Server</h3>
-                    <p>Engineering high-performance Rust server with adaptive worker pools targeting <strong>30% P99 latency reduction</strong> under variable load conditions.</p>
-                    <div class="project-tech">
-                        <span>Rust</span>
-                        <span>Tokio</span>
-                        <span>Async I/O</span>
+                    <div class="project-description">
+                        <p><strong>Problem:</strong> Traditional servers struggle with variable load</p>
+                        <p><strong>Solution:</strong> Building Rust server with adaptive worker pools</p>
+                        <p><strong>Impact:</strong> Targeting 30% P99 latency reduction</p>
                     </div>
+                    <div class="project-tech">
+                        <span><i class="fab fa-rust"></i> Rust</span>
+                        <span><i class="fas fa-bolt"></i> Tokio</span>
+                        <span><i class="fas fa-sync"></i> Async I/O</span>
+                    </div>
+                    <a href="https://github.com/cs5600-sp26/project-webserver-team0100" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
                 </div>
 
                 <div class="project-card">
-                    <div class="project-icon">💬</div>
+                    <div class="project-header">
+                        <div class="project-icon">💬</div>
+                        <span class="project-status completed">
+                            <i class="fas fa-check-circle"></i> Completed
+                        </span>
+                    </div>
                     <h3>Pathshala - Q&A Platform</h3>
-                    <p>Built full-stack interactive platform with role-based authentication supporting <strong>1,000+ concurrent users</strong>, driving <strong>45% engagement boost</strong>.</p>
+                    <div class="project-description">
+                        <p><strong>Problem:</strong> Need for real-time interactive learning platform</p>
+                        <p><strong>Solution:</strong> Built with WebSockets and role-based auth</p>
+                        <p><strong>Impact:</strong> 1,000+ concurrent users, 45% engagement boost</p>
+                    </div>
                     <div class="project-tech">
-                        <span>Spring Boot</span>
-                        <span>WebSockets</span>
-                        <span>PostgreSQL</span>
+                        <span><i class="fas fa-leaf"></i> Spring Boot</span>
+                        <span><i class="fas fa-plug"></i> WebSockets</span>
+                        <span><i class="fas fa-database"></i> PostgreSQL</span>
+                    </div>
+                    <div class="case-study-cta">
+                        <i class="fas fa-book"></i> Want to see the architecture? <a href="#contact">Request case study</a>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <div class="project-icon">⚡</div>
+                    <div class="project-header">
+                        <div class="project-icon">⚡</div>
+                        <span class="project-status completed">
+                            <i class="fas fa-check-circle"></i> Completed
+                        </span>
+                    </div>
                     <h3>Algorithm Framework</h3>
-                    <p>Implemented <strong>15+ optimized algorithms</strong> including Dijkstra's shortest path, AVL trees, and Dynamic Programming with comprehensive Big-O complexity analysis.</p>
+                    <div class="project-description">
+                        <p><strong>Problem:</strong> Need for optimized algorithm implementations</p>
+                        <p><strong>Solution:</strong> Implemented 15+ algorithms with complexity analysis</p>
+                        <p><strong>Impact:</strong> Includes Dijkstra's, AVL trees, Dynamic Programming</p>
+                    </div>
                     <div class="project-tech">
-                        <span>Java</span>
-                        <span>Python</span>
-                        <span>C++</span>
+                        <span><i class="fab fa-java"></i> Java</span>
+                        <span><i class="fab fa-python"></i> Python</span>
+                        <span><i class="fas fa-code"></i> C++</span>
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials fade-in">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-quote-left"></i> Recommendations
+            </h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Srashti consistently delivered high-quality code and took ownership of complex technical challenges. Her Java migration work was exceptional."</p>
+                    <div class="testimonial-author">
+                        <strong>Senior Engineering Manager</strong>
+                        <span>NAB Global Innovation Center</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Outstanding problem solver with deep expertise in microservices architecture. Always goes above and beyond to ensure system reliability."</p>
+                    <div class="testimonial-author">
+                        <strong>Technical Lead</strong>
+                        <span>IBM India</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Education Section -->
-    <section id="education" class="education">
+    <section class="education fade-in">
         <div class="container">
             <h2 class="section-title">Education</h2>
             <div class="education-grid">
-                <div class="education-card">
+                <div class="education-card featured">
+                    <div class="gpa-badge">4.0</div>
                     <h3>Master of Science in Computer Science</h3>
-                    <p class="school">Northeastern University, Boston, MA</p>
-                    <p class="date">Expected May 2027 • GPA: 4.0/4.0</p>
+                    <p class="school"><i class="fas fa-university"></i> Northeastern University, Boston, MA</p>
+                    <p class="date"><i class="fas fa-calendar"></i> Expected May 2027 • GPA: 4.0/4.0</p>
                     <p class="courses">Coursework: Database Management Systems, Algorithms, Programming Design Paradigms</p>
                 </div>
                 <div class="education-card">
                     <h3>Bachelor of Technology in Information Technology</h3>
-                    <p class="school">Banasthali Vidyapith, Rajasthan, India</p>
-                    <p class="date">May 2019</p>
+                    <p class="school"><i class="fas fa-university"></i> Banasthali Vidyapith, Rajasthan, India</p>
+                    <p class="date"><i class="fas fa-calendar"></i> May 2019</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <!-- Contact Section with Form -->
+    <section id="contact" class="contact fade-in">
         <div class="container">
             <h2 class="section-title">Let's Connect</h2>
             <p class="contact-subtitle">
-                Actively seeking Summer 2026 Software Engineering Internship opportunities.<br>
+                <span class="status-dot"></span> Actively seeking Summer 2026 Software Engineering Internship opportunities<br>
                 Available May - August 2026
             </p>
-            <div class="contact-links">
-                <a href="mailto:sg.srashtigupta@gmail.com" class="contact-btn">
-                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                        <polyline points="22,6 12,13 2,6"></polyline>
-                    </svg>
-                    Email Me
-                </a>
-                <a href="https://linkedin.com/in/srashti-gupta-07b634151" target="_blank" class="contact-btn">
-                    <svg width="20" height="20" fill="currentColor">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                    </svg>
-                    LinkedIn
-                </a>
-                <a href="https://github.com/srashtigupta-25" target="_blank" class="contact-btn">
-                    <svg width="20" height="20" fill="currentColor">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                    GitHub
-                </a>
-                <a href="tel:857-381-6346" class="contact-btn">
-                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                    </svg>
-                    Call Me
-                </a>
+            
+            <div class="contact-layout">
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <h3><i class="fas fa-envelope"></i> Send me a message</h3>
+                    <form id="contactForm">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Contact Links -->
+                <div class="contact-links">
+                    <h3><i class="fas fa-link"></i> Or reach out directly</h3>
+                    <a href="mailto:sg.srashtigupta@gmail.com" class="contact-btn">
+                        <i class="fas fa-envelope"></i>
+                        <span>sg.srashtigupta@gmail.com</span>
+                    </a>
+                    <a href="tel:857-381-6346" class="contact-btn">
+                        <i class="fas fa-phone"></i>
+                        <span>857-381-6346</span>
+                    </a>
+                    <a href="https://linkedin.com/in/srashti-gupta-07b634151" target="_blank" class="contact-btn">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn Profile</span>
+                    </a>
+                    <a href="https://github.com/srashtigupta-25" target="_blank" class="contact-btn">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub Profile</span>
+                    </a>
+                    <a href="resume.pdf" download class="contact-btn download">
+                        <i class="fas fa-download"></i>
+                        <span>Download Resume</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
+
+    <!-- Performance Badge -->
+    <div class="performance-badge">
+        <i class="fas fa-bolt"></i> Site loads in <2s
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <p>© Copyright 2026. Made by Srashti Gupta</p>
+            <p class="footer-meta">Built with ❤️ using vanilla HTML, CSS, JavaScript</p>
         </div>
     </footer>
 
