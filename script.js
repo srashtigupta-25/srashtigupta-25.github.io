@@ -13,10 +13,11 @@ const navLinks = document.querySelectorAll('.nav-link');
 
 function setActiveNav() {
     const scrollY = window.scrollY;
+    const viewportHeight = window.innerHeight;
     
     sections.forEach(section => {
         const sectionHeight = section.offsetHeight;
-        const sectionTop = section.offsetTop - 100;
+        const sectionTop = section.offsetTop - (viewportHeight / 3);
         const sectionId = section.getAttribute('id');
         
         if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
