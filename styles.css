@@ -444,16 +444,16 @@ section {
 /* Skills Interactive */
 .about-right {
     background: var(--bg-light);
-    padding: 40px;
+    padding: 28px;
     border-radius: 16px;
     position: sticky;
     top: 100px;
 }
 
 .skills-title {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 700;
-    margin-bottom: 32px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -462,13 +462,13 @@ section {
 .skills-interactive {
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    gap: 18px;
 }
 
 .skill-category h4 {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -476,8 +476,8 @@ section {
 
 .skill-tags {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 8px;
     overflow: visible;
 }
 
@@ -487,9 +487,9 @@ section {
     justify-content: center;
     gap: 6px;
     background: white;
-    padding: 10px 14px;
+    padding: 8px 10px;
     border-radius: 8px;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
     color: var(--text-secondary);
     border: 2px solid var(--border);
