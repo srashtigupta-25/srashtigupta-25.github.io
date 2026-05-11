@@ -1,135 +1,131 @@
-// Scroll Progress Bar
+/* ============================================================
+   SRASHTI GUPTA PORTFOLIO — SCRIPT
+   ============================================================ */
+
+// ── Scroll Progress Bar ──────────────────────────────────────
 function updateScrollProgress() {
-    const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (window.scrollY / windowHeight) * 100;
-    document.getElementById('scrollProgress').style.width = scrolled + '%';
+  const total = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const pct = (window.scrollY / total) * 100;
+  const bar = document.getElementById('scrollProgress');
+  if (bar) bar.style.width = pct + '%';
 }
 
-window.addEventListener('scroll', updateScrollProgress);
+// ── Navbar scroll state ───────────────────────────────────────
+function updateNav() {
+  const navbar = document.getElementById('navbar');
+  if (!navbar) return;
+  if (window.scrollY > 60) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+}
 
-// Active Navigation Highlighting
+// ── Active nav link highlighting ──────────────────────────────
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-link');
 
 function setActiveNav() {
-    const scrollY = window.scrollY;
-    const viewportHeight = window.innerHeight;
-    
-    sections.forEach(section => {
-        const sectionHeight = section.offsetHeight;
-        const sectionTop = section.offsetTop - (viewportHeight / 3);
-        const sectionId = section.getAttribute('id');
-        
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${sectionId}`) {
-                    link.classList.add('active');
-                }
-            });
+  const scrollY = window.scrollY + window.innerHeight / 3;
+  sections.forEach(section => {
+    const top = section.offsetTop;
+    const bottom = top + section.offsetHeight;
+    const id = section.getAttribute('id');
+    if (scrollY >= top && scrollY < bottom) {
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${id}`) {
+          link.classList.add('active');
         }
-    });
-    
-    // Add scrolled class to navbar
-    const navbar = document.getElementById('navbar');
-    if (scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
+      });
     }
+  });
 }
 
-window.addEventListener('scroll', setActiveNav);
-
-// Mobile Menu Toggle
+// ── Mobile Menu ───────────────────────────────────────────────
 const menuToggle = document.getElementById('menuToggle');
 const navLinksContainer = document.getElementById('navLinks');
 
-menuToggle.addEventListener('click', () => {
+if (menuToggle && navLinksContainer) {
+  menuToggle.addEventListener('click', () => {
     navLinksContainer.classList.toggle('mobile-active');
     menuToggle.classList.toggle('active');
-});
+  });
 
-// Close mobile menu when clicking a link
-navLinks.forEach(link => {
+  navLinks.forEach(link => {
     link.addEventListener('click', () => {
-        navLinksContainer.classList.remove('mobile-active');
-        menuToggle.classList.remove('active');
+      navLinksContainer.classList.remove('mobile-active');
+      menuToggle.classList.remove('active');
     });
-});
-
-// Smooth Scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const offset = 80;
-            const targetPosition = target.offsetTop - offset;
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// Fade-in Animation on Scroll
-const observerOptions = {
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.animationPlayState = 'running';
-        }
-    });
-}, observerOptions);
-
-document.querySelectorAll('.fade-in').forEach(section => {
-    section.style.animationPlayState = 'paused';
-    observer.observe(section);
-});
-
-// Contact Form Submission
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        // Get form values
-        const name = contactForm.querySelector('input[type="text"]').value;
-        const email = contactForm.querySelector('input[type="email"]').value;
-        const message = contactForm.querySelector('textarea').value;
-        
-        // Simple mailto fallback
-        const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
-        const body = encodeURIComponent(`From: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-        window.location.href = `mailto:sg.srashtigupta@gmail.com?subject=${subject}&body=${body}`;
-        
-        // Reset form
-        contactForm.reset();
-        
-        // Show feedback
-        alert('Opening your email client...');
-    });
+  });
 }
 
-// Skill Tag Tooltips (already handled with CSS, just ensuring interactivity)
-const skillTags = document.querySelectorAll('.skill-tag');
-skillTags.forEach(tag => {
-    tag.addEventListener('mouseenter', function() {
-        this.style.zIndex = '10';
-    });
-    tag.addEventListener('mouseleave', function() {
-        this.style.zIndex = '1';
-    });
+// ── Smooth Scroll ─────────────────────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    const href = this.getAttribute('href');
+    const target = document.querySelector(href);
+    if (target) {
+      e.preventDefault();
+      const offset = 80;
+      window.scrollTo({
+        top: target.offsetTop - offset,
+        behavior: 'smooth'
+      });
+    }
+  });
 });
 
-// Initialize
+// ── Reveal on Scroll ──────────────────────────────────────────
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      // Stagger siblings slightly
+      const siblings = entry.target.parentElement
+        ? [...entry.target.parentElement.querySelectorAll('.reveal')]
+        : [];
+      const idx = siblings.indexOf(entry.target);
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, idx * 80);
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.1,
+  rootMargin: '0px 0px -40px 0px'
+});
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ── Contact Form ──────────────────────────────────────────────
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name    = contactForm.querySelector('input[type="text"]').value.trim();
+    const email   = contactForm.querySelector('input[type="email"]').value.trim();
+    const message = contactForm.querySelector('textarea').value.trim();
+
+    if (!name || !email || !message) return;
+
+    const subject = encodeURIComponent(`Portfolio message from ${name}`);
+    const body    = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+    window.location.href = `mailto:sg.srashtigupta@gmail.com?subject=${subject}&body=${body}`;
+    contactForm.reset();
+  });
+}
+
+// ── Scroll event handler ──────────────────────────────────────
+window.addEventListener('scroll', () => {
+  updateScrollProgress();
+  updateNav();
+  setActiveNav();
+}, { passive: true });
+
+// ── Init ──────────────────────────────────────────────────────
 window.addEventListener('load', () => {
-    updateScrollProgress();
-    setActiveNav();
+  updateScrollProgress();
+  updateNav();
+  setActiveNav();
 });
