@@ -1,27 +1,23 @@
 /* ============================================================
-   SRASHTI GUPTA PORTFOLIO — SCRIPT
+   SRASHTI GUPTA PORTFOLIO - SCRIPT
    ============================================================ */
 
-// ── Scroll Progress Bar ──────────────────────────────────────
+// Scroll Progress Bar
 function updateScrollProgress() {
   const total = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  const pct = (window.scrollY / total) * 100;
+  const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
   const bar = document.getElementById('scrollProgress');
   if (bar) bar.style.width = pct + '%';
 }
 
-// ── Navbar scroll state ───────────────────────────────────────
+// Navbar scroll state
 function updateNav() {
   const navbar = document.getElementById('navbar');
   if (!navbar) return;
-  if (window.scrollY > 60) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
 }
 
-// ── Active nav link highlighting ──────────────────────────────
+// Active nav link
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-link');
 
@@ -34,7 +30,7 @@ function setActiveNav() {
     if (scrollY >= top && scrollY < bottom) {
       navLinks.forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href') === `#${id}`) {
+        if (link.getAttribute('href') === '#' + id) {
           link.classList.add('active');
         }
       });
@@ -42,7 +38,7 @@ function setActiveNav() {
   });
 }
 
-// ── Mobile Menu ───────────────────────────────────────────────
+// Mobile Menu
 const menuToggle = document.getElementById('menuToggle');
 const navLinksContainer = document.getElementById('navLinks');
 
@@ -51,7 +47,6 @@ if (menuToggle && navLinksContainer) {
     navLinksContainer.classList.toggle('mobile-active');
     menuToggle.classList.toggle('active');
   });
-
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
       navLinksContainer.classList.remove('mobile-active');
@@ -60,45 +55,37 @@ if (menuToggle && navLinksContainer) {
   });
 }
 
-// ── Smooth Scroll ─────────────────────────────────────────────
+// Smooth Scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     const href = this.getAttribute('href');
+    if (href === '#') return;
     const target = document.querySelector(href);
     if (target) {
       e.preventDefault();
-      const offset = 80;
-      window.scrollTo({
-        top: target.offsetTop - offset,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
     }
   });
 });
 
-// ── Reveal on Scroll ──────────────────────────────────────────
+// Reveal on Scroll
 const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
+  entries.forEach(entry => {
     if (entry.isIntersecting) {
-      // Stagger siblings slightly
+      // Stagger siblings
       const siblings = entry.target.parentElement
         ? [...entry.target.parentElement.querySelectorAll('.reveal')]
         : [];
-      const idx = siblings.indexOf(entry.target);
-      setTimeout(() => {
-        entry.target.classList.add('visible');
-      }, idx * 80);
+      const idx = Math.max(0, siblings.indexOf(entry.target));
+      setTimeout(() => entry.target.classList.add('visible'), idx * 80);
       revealObserver.unobserve(entry.target);
     }
   });
-}, {
-  threshold: 0.1,
-  rootMargin: '0px 0px -40px 0px'
-});
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-// ── Contact Form ──────────────────────────────────────────────
+// Contact Form
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
   contactForm.addEventListener('submit', (e) => {
@@ -106,24 +93,21 @@ if (contactForm) {
     const name    = contactForm.querySelector('input[type="text"]').value.trim();
     const email   = contactForm.querySelector('input[type="email"]').value.trim();
     const message = contactForm.querySelector('textarea').value.trim();
-
     if (!name || !email || !message) return;
-
-    const subject = encodeURIComponent(`Portfolio message from ${name}`);
-    const body    = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-    window.location.href = `mailto:sg.srashtigupta@gmail.com?subject=${subject}&body=${body}`;
+    const subject = encodeURIComponent('Portfolio message from ' + name);
+    const body    = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + message);
+    window.location.href = 'mailto:sg.srashtigupta@gmail.com?subject=' + subject + '&body=' + body;
     contactForm.reset();
   });
 }
 
-// ── Scroll event handler ──────────────────────────────────────
+// Scroll listeners
 window.addEventListener('scroll', () => {
   updateScrollProgress();
   updateNav();
   setActiveNav();
 }, { passive: true });
 
-// ── Init ──────────────────────────────────────────────────────
 window.addEventListener('load', () => {
   updateScrollProgress();
   updateNav();
