@@ -52,9 +52,9 @@ a { text-decoration: none; }
 .menu-toggle span { width: 22px; height: 1.5px; background: rgba(255,255,255,0.8); display: block; transition: all 0.3s; }
 
 /* ---- HERO with photo ---- */
-.hero { background: var(--dark); min-height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; padding: 88px 0 0; }
+.hero { background: var(--dark); height: 100vh; min-height: 600px; display: flex; flex-direction: column; position: relative; overflow: hidden; padding-top: 68px; }
 .hero-bg-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%); }
-.hero .container { position: relative; z-index: 2; flex: 1; display: flex; align-items: center; padding-top: 40px; padding-bottom: 40px; }
+.hero .container { position: relative; z-index: 2; flex: 1; display: flex; align-items: center; padding-top: 20px; padding-bottom: 20px; }
 
 /* Two-column hero layout */
 .hero-layout { display: grid; grid-template-columns: 1fr 380px; gap: 60px; align-items: center; }
@@ -86,7 +86,7 @@ a { text-decoration: none; }
 /* ---- STATS BAR ---- */
 .stats-bar { background: rgba(0,0,0,0.35); border-top: 1px solid var(--dark-3); position: relative; z-index: 2; }
 .stats-inner { display: flex; align-items: center; overflow-x: auto; }
-.stat { display: flex; flex-direction: column; align-items: center; padding: 26px 36px; flex: 1; min-width: 140px; }
+.stat { display: flex; flex-direction: column; align-items: center; padding: 18px 36px; flex: 1; min-width: 140px; }
 .stat-num { font-family: var(--font-serif); font-size: 34px; color: var(--accent-2); line-height: 1; margin-bottom: 5px; }
 .stat-label { font-size: 11px; color: rgba(255,255,255,0.4); text-align: center; letter-spacing: 0.03em; }
 .stat-div { width: 1px; height: 36px; background: var(--dark-3); flex-shrink: 0; }
