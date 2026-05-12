@@ -52,9 +52,9 @@ a { text-decoration: none; }
 .menu-toggle span { width: 22px; height: 1.5px; background: rgba(255,255,255,0.8); display: block; transition: all 0.3s; }
 
 /* ---- HERO with photo ---- */
-.hero { background: var(--dark); min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding: 100px 0 80px; }
+.hero { background: var(--dark); min-height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; padding: 88px 0 0; }
 .hero-bg-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%); }
-.hero .container { position: relative; z-index: 2; }
+.hero .container { position: relative; z-index: 2; flex: 1; display: flex; align-items: center; padding-top: 40px; padding-bottom: 40px; }
 
 /* Two-column hero layout */
 .hero-layout { display: grid; grid-template-columns: 1fr 380px; gap: 60px; align-items: center; }
@@ -84,7 +84,7 @@ a { text-decoration: none; }
 @keyframes scrollFade { 0%,100% { opacity:0; transform: scaleY(0); transform-origin:top; } 50% { opacity:1; transform: scaleY(1); } }
 
 /* ---- STATS BAR ---- */
-.stats-bar { background: var(--dark-2); border-bottom: 1px solid var(--dark-3); }
+.stats-bar { background: rgba(0,0,0,0.35); border-top: 1px solid var(--dark-3); position: relative; z-index: 2; }
 .stats-inner { display: flex; align-items: center; overflow-x: auto; }
 .stat { display: flex; flex-direction: column; align-items: center; padding: 26px 36px; flex: 1; min-width: 140px; }
 .stat-num { font-family: var(--font-serif); font-size: 34px; color: var(--accent-2); line-height: 1; margin-bottom: 5px; }
@@ -124,6 +124,8 @@ a { text-decoration: none; }
 .cert-list { display: flex; flex-direction: column; gap: 2px; }
 .cert-item-link { display: flex; align-items: center; gap: 12px; padding: 10px 8px; border-radius: 8px; color: var(--ink-2); transition: background 0.2s; text-decoration: none; }
 .cert-item-link:hover { background: var(--paper-2); }
+.cert-item-static { cursor: default; color: var(--ink-3); }
+.cert-item-static:hover { background: transparent; }
 .cert-icon-wrap { width: 32px; height: 32px; border-radius: 8px; background: var(--paper-2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 15px; }
 .cert-icon-wrap.li { background: #e8f4fd; color: #0a66c2; }
 .cert-icon-wrap.ms { background: #fff3e0; color: #f25022; }
