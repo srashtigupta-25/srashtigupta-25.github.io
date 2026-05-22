@@ -177,7 +177,7 @@ a { text-decoration: none; }
 .projects { background: var(--dark); padding: 100px 0; }
 .projects .section-label { color: var(--accent-2); }
 .projects .section-heading { color: var(--white); }
-.projects-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+.projects-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; }
 .proj-card { background: var(--dark-2); border: 1px solid var(--dark-3); border-radius: 14px; padding: 28px; display: flex; flex-direction: column; gap: 14px; transition: border-color 0.25s, transform 0.25s; }
 .proj-card:hover { border-color: var(--accent); transform: translateY(-3px); }
 .proj-card-cta { border-style: dashed; }
