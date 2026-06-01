@@ -76,7 +76,6 @@
     <span>Scroll</span>
     <div class="scroll-line"></div>
   </div>
-
   <!-- Stats pinned to bottom of hero -->
   <div class="stats-bar">
     <div class="container stats-inner">
@@ -109,7 +108,6 @@
       </div>
     </div>
     <div class="about-right reveal">
-      <!-- Education -->
       <div class="info-panel">
         <div class="info-panel-label"><i class="fas fa-graduation-cap"></i> Education</div>
         <div class="edu-item">
@@ -122,8 +120,6 @@
           <div class="edu-school">Banasthali Vidyapith, Rajasthan, India - 2019</div>
         </div>
       </div>
-
-      <!-- Certifications with clickable links -->
       <div class="info-panel">
         <div class="info-panel-label"><i class="fas fa-certificate"></i> Certifications</div>
         <div class="cert-list">
@@ -172,7 +168,7 @@
   </div>
 </section>
 
-<!-- SKILLS - full dedicated section -->
+<!-- SKILLS -->
 <section id="skills" class="skills-section">
   <div class="container">
     <div class="section-label">Technical Skills</div>
@@ -338,13 +334,37 @@
   </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- PROJECTS — ordered most recent first -->
 <section id="projects" class="projects">
   <div class="container">
     <div class="section-label">Projects</div>
     <h2 class="section-heading">Things I've built</h2>
     <div class="projects-grid">
 
+      <!-- 1. SAGE — May 2026 — LIVE -->
+      <div class="proj-card reveal">
+        <div class="proj-top"><span class="proj-year">2026</span><span class="proj-status shipped">Live</span></div>
+        <h3 class="proj-title">Sage - AI Research Synthesizer</h3>
+        <p class="proj-desc">Submit any topic and Sage delivers a structured intelligence brief in under 45 seconds. A 5-state Step Functions pipeline decomposes the topic into 3 parallel AI research threads grounded in live web data via Tavily, synthesizes a 350-900 word report using Claude Haiku 4.5 on Bedrock, and persists results to DynamoDB - entirely serverless on AWS with full Cognito auth, PDF export, and CloudFront CDN delivery.</p>
+        <div class="proj-result">Live on CloudFront - Java 25 - AWS Bedrock - Step Functions - DynamoDB - Cognito</div>
+        <div class="proj-stack"><span>Java 25</span><span>AWS Lambda</span><span>Step Functions</span><span>Amazon Bedrock</span><span>DynamoDB</span><span>CloudFront</span><span>Cognito</span><span>React 18</span></div>
+        <div style="display:flex; gap:12px; margin-top:auto; flex-wrap:wrap;">
+          <a href="https://d1kbvlvilht945.cloudfront.net" target="_blank" class="proj-link">Try it Live <i class="fas fa-external-link-alt"></i></a>
+          <a href="https://github.com/srashtigupta-25/sage-research-synthesizer" target="_blank" class="proj-link">GitHub <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- 2. Walmart Forage — May 2026 -->
+      <div class="proj-card reveal">
+        <div class="proj-top"><span class="proj-year">2026</span><span class="proj-status shipped">Completed</span></div>
+        <h3 class="proj-title">Walmart Advanced Software Engineering</h3>
+        <p class="proj-desc">Completed Walmart USA's Advanced Software Engineering Job Simulation on Forage - solving real engineering problems across multiple teams. Developed a novel heap data structure in Java for Walmart's shipping department, designed a UML class diagram for a multi-mode data processor, and created an ER diagram for Walmart's pet department database meeting full business requirements.</p>
+        <div class="proj-result">Java heap DSA - UML design - ER diagram - System design under real constraints</div>
+        <div class="proj-stack"><span>Java</span><span>Data Structures</span><span>UML Design</span><span>ER Diagrams</span><span>System Design</span></div>
+        <a href="https://www.theforage.com/simulations/walmart/software-engineering-fceb/completed" target="_blank" class="proj-link">View Certificate <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <!-- 3. Rust Web Server — March 2026 -->
       <div class="proj-card reveal">
         <div class="proj-top"><span class="proj-year">2026</span><span class="proj-status shipped">Shipped</span></div>
         <h3 class="proj-title">Adaptive Concurrent Web Server</h3>
@@ -354,6 +374,7 @@
         <a href="https://github.com/cs5600-sp26/project-webserver-team0100" target="_blank" class="proj-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
       </div>
 
+      <!-- 4. Data Warehouse — December 2025 -->
       <div class="proj-card reveal">
         <div class="proj-top"><span class="proj-year">2025</span><span class="proj-status shipped">Shipped</span></div>
         <h3 class="proj-title">Streaming Analytics Data Warehouse</h3>
@@ -361,26 +382,6 @@
         <div class="proj-result">98K+ records processed - 3 years of viewership trends surfaced</div>
         <div class="proj-stack"><span>R</span><span>MySQL</span><span>Docker</span><span>ETL</span></div>
         <a href="https://github.com/srashtigupta-25/Streaming-Analytics-Data-Warehouse" target="_blank" class="proj-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
-      </div>
-
-      <!-- Walmart Forage Simulation -->
-      <div class="proj-card reveal">
-        <div class="proj-top"><span class="proj-year">2026</span><span class="proj-status shipped">Completed</span></div>
-        <h3 class="proj-title">Walmart Advanced Software Engineering</h3>
-        <p class="proj-desc">Completed Walmart USA's Advanced Software Engineering Job Simulation on Forage - solving real engineering problems across multiple teams. Developed a novel heap data structure in Java for Walmart's shipping department, designed a UML class diagram for a multi-mode data processor, and created an entity relationship diagram for Walmart's pet department database accounting for all business requirements.</p>
-        <div class="proj-result">Java heap DSA - UML design - ER diagram - System design under real constraints</div>
-        <div class="proj-stack"><span>Java</span><span>Data Structures</span><span>UML Design</span><span>ER Diagrams</span><span>System Design</span></div>
-        <a href="https://www.theforage.com/simulations/walmart/software-engineering-fceb/completed" target="_blank" class="proj-link">View Certificate <i class="fas fa-arrow-right"></i></a>
-      </div>
-
-      <!-- Lumina project -->
-      <div class="proj-card reveal proj-card-cta">
-        <div class="proj-top"><span class="proj-year">2026</span><span class="proj-status building">Building</span></div>
-        <h3 class="proj-title">Lumina - AI-Powered Research Synthesizer</h3>
-        <p class="proj-desc">Submit any research topic and Lumina produces a full AI-generated report with images. A 5-state Step Functions pipeline decomposes the topic into 3 sub-questions, runs parallel Bedrock Claude research across a Map state, synthesizes a structured 500-word report, generates visuals via Titan Image G1, and persists everything to DynamoDB - entirely serverless on AWS.</p>
-        <div class="proj-result">API Gateway - Lambda - Step Functions - Bedrock - DynamoDB - S3 - Cognito</div>
-        <div class="proj-stack"><span>Python</span><span>AWS Lambda</span><span>Step Functions</span><span>Amazon Bedrock</span><span>DynamoDB</span><span>React</span></div>
-        <a href="https://github.com/srashtigupta-25/lumina-research-synthesizer" target="_blank" class="proj-link">Follow on GitHub <i class="fas fa-arrow-right"></i></a>
       </div>
 
     </div>
@@ -393,7 +394,6 @@
     <div class="section-label">Recommendations</div>
     <h2 class="section-heading">What colleagues say</h2>
     <div class="recs-grid">
-
       <div class="rec-card reveal">
         <div class="rec-quote">"</div>
         <p class="rec-text">I've had the privilege of working with Srashti for the past two years, and she has consistently proven herself as an exceptionally capable backend engineer. With expertise in Java 17, Spring Boot, and microservices, she has designed and delivered high-performance APIs that are core to our platform's success. Srashti owns the complete development lifecycle - from translating business requirements into technical designs to overseeing deployment.</p>
@@ -405,7 +405,6 @@
           </div>
         </div>
       </div>
-
       <div class="rec-card reveal">
         <div class="rec-quote">"</div>
         <p class="rec-text">Srashti is a talented and driven professional with exceptional skills in Java, Node.js, and Docker. Her leadership, creativity, and commitment to excellence make her stand out in any team. She has the rare ability to turn complex challenges into impactful solutions.</p>
@@ -417,7 +416,6 @@
           </div>
         </div>
       </div>
-
       <div class="rec-card reveal">
         <div class="rec-quote">"</div>
         <p class="rec-text">I have worked with Srashti as her technical manager and lead. She joined my team fresh out of college and quickly became one of the most reliable engineers. Her ability to learn quickly, take ownership, and deliver quality work consistently impressed me throughout our time working together.</p>
@@ -429,7 +427,6 @@
           </div>
         </div>
       </div>
-
       <div class="rec-card reveal">
         <div class="rec-quote">"</div>
         <p class="rec-text">I rarely come across real talents who stand out like Srashti. Her ability to find bugs like a spec of dust in a crystal is exceptional. No matter how difficult the task, she made it easy with her immense knowledge, logical capabilities and hard work.</p>
@@ -441,7 +438,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
