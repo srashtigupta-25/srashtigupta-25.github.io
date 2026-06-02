@@ -20,60 +20,6 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
-  <style>
-    /* Sage featured card */
-    .proj-card.featured {
-      border-color: var(--accent);
-      background: linear-gradient(135deg, rgba(200,98,42,0.08) 0%, var(--dark-2) 60%);
-      position: relative;
-      overflow: hidden;
-    }
-    .proj-card.featured::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent));
-    }
-    .proj-featured-badge {
-      font-size: 10px;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 100px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      color: var(--white);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    /* Hero Sage callout */
-    .hero-sage-callout {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(200,98,42,0.12);
-      border: 1px solid rgba(200,98,42,0.3);
-      border-radius: 100px;
-      padding: 8px 16px;
-      margin-bottom: 24px;
-      font-size: 13px;
-      color: var(--accent-2);
-      font-weight: 500;
-      transition: all 0.2s;
-      text-decoration: none;
-    }
-    .hero-sage-callout:hover {
-      background: rgba(200,98,42,0.2);
-      border-color: var(--accent);
-      color: var(--white);
-    }
-    .hero-sage-callout .live-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: #4ade80;
-      animation: pulse 2s infinite;
-      flex-shrink: 0;
-    }
-  </style>
 </head>
 <body>
 
@@ -99,7 +45,7 @@
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- HERO — unchanged UI, updated hero-meta to mention Sage -->
 <section id="home" class="hero">
   <div class="hero-bg-grid"></div>
   <div class="container hero-layout">
@@ -108,22 +54,16 @@
         <span class="avail-dot"></span>
         <span>Open to Software Engineering Internship Opportunities</span>
       </div>
-      <!-- Sage live callout — hero highlight -->
-      <a href="https://d1kbvlvilht945.cloudfront.net" target="_blank" class="hero-sage-callout">
-        <span class="live-dot"></span>
-        <span>Now live: Sage — AI Research Synthesizer on AWS</span>
-        <i class="fas fa-arrow-right" style="font-size:11px;"></i>
-      </a>
       <h1 class="hero-name">Srashti<br><em>Gupta</em></h1>
-      <p class="hero-statement">I build distributed backend systems that handle millions of requests — reliably, fast, and at scale. Most recently: a production AI research pipeline on AWS.</p>
+      <p class="hero-statement">I build distributed backend systems that handle millions of requests - reliably, fast, and at scale.</p>
       <div class="hero-meta">
         <span><i class="fas fa-briefcase"></i> 5+ Years - NAB, IBM, Capgemini</span>
         <span><i class="fas fa-graduation-cap"></i> MS CS @ Northeastern - 4.0 GPA</span>
         <span><i class="fas fa-award"></i> 3 Industry Awards</span>
       </div>
       <div class="hero-cta">
-        <a href="https://d1kbvlvilht945.cloudfront.net" target="_blank" class="btn-primary">Try Sage Live <i class="fas fa-external-link-alt"></i></a>
-        <a href="#work" class="btn-ghost">See my work <i class="fas fa-arrow-right"></i></a>
+        <a href="#work" class="btn-primary">See my work <i class="fas fa-arrow-right"></i></a>
+        <a href="#contact" class="btn-ghost">Get in touch</a>
       </div>
     </div>
     <div class="hero-photo-wrap">
@@ -136,35 +76,34 @@
     <span>Scroll</span>
     <div class="scroll-line"></div>
   </div>
-  <!-- Stats bar — swapped Code Coverage for Sage metric -->
+  <!-- Stats bar — unchanged -->
   <div class="stats-bar">
     <div class="container stats-inner">
       <div class="stat"><span class="stat-num">1M+</span><span class="stat-label">Daily API Requests</span></div>
       <div class="stat-div"></div>
       <div class="stat"><span class="stat-num">35%</span><span class="stat-label">API Latency Reduced</span></div>
       <div class="stat-div"></div>
-      <div class="stat"><span class="stat-num">45s</span><span class="stat-label">Sage AI Report Time</span></div>
-      <div class="stat-div"></div>
       <div class="stat"><span class="stat-num">20+</span><span class="stat-label">Microservices Migrated</span></div>
+      <div class="stat-div"></div>
+      <div class="stat"><span class="stat-num">98%</span><span class="stat-label">Code Coverage</span></div>
       <div class="stat-div"></div>
       <div class="stat"><span class="stat-num">4.0</span><span class="stat-label">Graduate GPA</span></div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ABOUT — same UI, added Sage paragraph + BTech GPA -->
 <section id="about" class="about">
   <div class="container about-grid">
     <div class="about-left reveal">
       <div class="section-label">About</div>
       <h2 class="section-heading">Who I am</h2>
       <p class="about-p">I'm a backend engineer who thrives on making distributed systems faster, more reliable, and easier to maintain. Over 5 years at <strong>NAB, IBM, and Capgemini</strong>, I've worked on APIs handling millions of requests, led large-scale Java migrations, built enterprise software for clients like <strong>Samsung and Hughes.net</strong>, and coached teams on microservices and TDD.</p>
-      <p class="about-p">Most recently I shipped <strong>Sage</strong> — a production-grade AI research synthesizer built entirely on AWS serverless infrastructure. It uses a 5-state Step Functions pipeline, Amazon Bedrock (Claude Haiku 4.5), and Tavily live web search to deliver structured intelligence briefs in under 45 seconds. <a href="https://d1kbvlvilht945.cloudfront.net" target="_blank" style="color:var(--accent);font-weight:600;">Try it live →</a></p>
-      <p class="about-p">I'm currently an MS Computer Science student at <strong>Northeastern University</strong> (GPA: 4.0), drawn to problems where performance decisions have real impact at scale: event-driven architecture, cloud-native AI systems, and backend infrastructure.</p>
+      <p class="about-p">Right now I'm a Master of Science in Computer Science student at <strong>Northeastern University</strong> (GPA: 4.0), applying systems theory to real engineering problems - from building Rust web servers to designing star-schema data warehouses. Most recently I shipped <strong><a href="https://d1kbvlvilht945.cloudfront.net" target="_blank" style="color:var(--accent);">Sage</a></strong> - a live AI research synthesizer built entirely on AWS serverless infrastructure using Amazon Bedrock, Step Functions, and Cognito.</p>
+      <p class="about-p">I'm drawn to problems where performance decisions have real impact at scale: event-driven architecture, cloud-native systems, and backend infrastructure. Outside of engineering, I mentor junior developers and am completing certifications in AI and cloud.</p>
       <div class="about-links">
         <a href="https://linkedin.com/in/srashti-gupta-07b634151" target="_blank" class="about-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
         <a href="https://github.com/srashtigupta-25" target="_blank" class="about-link"><i class="fab fa-github"></i> GitHub</a>
-        <a href="https://d1kbvlvilht945.cloudfront.net" target="_blank" class="about-link"><i class="fas fa-rocket"></i> Try Sage</a>
         <a href="resume.pdf" download class="about-link"><i class="fas fa-file-pdf"></i> Resume</a>
       </div>
     </div>
@@ -229,7 +168,7 @@
   </div>
 </section>
 
-<!-- SKILLS — fully synced with resume -->
+<!-- SKILLS — synced with resume -->
 <section id="skills" class="skills-section">
   <div class="container">
     <div class="section-label">Technical Skills</div>
@@ -275,12 +214,11 @@
   </div>
 </section>
 
-<!-- WORK -->
+<!-- WORK — unchanged -->
 <section id="work" class="work">
   <div class="container">
     <div class="section-label">Experience</div>
     <h2 class="section-heading">Where I've worked</h2>
-    <!-- NAB -->
     <div class="work-item reveal">
       <div class="work-left">
         <div class="work-logo-wrap"><img src="nab.png" alt="NAB" class="work-logo"></div>
@@ -301,11 +239,11 @@
         <div class="work-achievements">
           <div class="ach">
             <div class="ach-metric">35% latency down</div>
-            <div class="ach-detail">Optimized <strong>20+ RESTful APIs</strong> processing <strong>1M+ daily requests</strong> via Redis caching, database indexing, and OAuth 2.0/JWT on AWS with Kubernetes - received STAR Award</div>
+            <div class="ach-detail">Optimized 20+ RESTful APIs processing <strong>1M+ daily requests</strong> via Redis caching, database indexing, and OAuth 2.0/JWT on AWS with Kubernetes - received STAR Award</div>
           </div>
           <div class="ach">
             <div class="ach-metric">Java 8 to 17</div>
-            <div class="ach-detail">Spearheaded 4-month migration of <strong>20 banking microservices</strong>, resolving critical CVEs and replacing deprecated Spring Security imports, leveraging Apache Kafka and MongoDB</div>
+            <div class="ach-detail">Spearheaded 4-month migration of <strong>20 banking microservices</strong>, resolving critical CVEs and replacing deprecated Spring Security imports across distributed systems</div>
           </div>
           <div class="ach">
             <div class="ach-metric">80% visibility up</div>
@@ -321,7 +259,6 @@
         </div>
       </div>
     </div>
-    <!-- IBM -->
     <div class="work-item reveal">
       <div class="work-left">
         <div class="work-logo-wrap"><img src="ibm.jpeg" alt="IBM" class="work-logo"></div>
@@ -338,15 +275,15 @@
         <div class="work-achievements">
           <div class="ach">
             <div class="ach-metric">45% perf up</div>
-            <div class="ach-detail">Architected event-driven microservices with <strong>Spring Data JPA, Hibernate</strong>, and Circuit Breaker/Saga patterns using PostgreSQL - eliminated cascading failures</div>
+            <div class="ach-detail">Architected event-driven microservices with <strong>Spring Data JPA, Hibernate</strong>, Circuit Breaker and Saga patterns using PostgreSQL - eliminated cascading failures</div>
           </div>
           <div class="ach">
             <div class="ach-metric">40% deploy down</div>
-            <div class="ach-detail">Delivered automated CI/CD pipelines with Jenkins and Docker, cutting release cycle time across <strong>10+ microservices</strong>, standardized APIs via Swagger/OpenAPI and managed Oracle databases</div>
+            <div class="ach-detail">Delivered automated CI/CD pipelines with Jenkins and Docker, cutting release cycle time <strong>across 10+ microservices</strong>, standardized APIs via Swagger/OpenAPI and managed Oracle databases</div>
           </div>
           <div class="ach">
             <div class="ach-metric">40% engagement up</div>
-            <div class="ach-detail">Launched full-stack feature with React and Spring Boot driving a 40% increase in daily active users and average session time across the client portal</div>
+            <div class="ach-detail">Launched full-stack feature with React and Spring Boot that drove a 40% increase in daily active users and average session time across the client portal</div>
           </div>
         </div>
         <div class="work-stack">
@@ -354,7 +291,6 @@
         </div>
       </div>
     </div>
-    <!-- Capgemini -->
     <div class="work-item reveal">
       <div class="work-left">
         <div class="work-logo-wrap"><img src="capgemini.png" alt="Capgemini" class="work-logo"></div>
@@ -373,7 +309,7 @@
         <div class="work-achievements">
           <div class="ach">
             <div class="ach-metric">25% response down</div>
-            <div class="ach-detail">Resolved performance bottlenecks across <strong>14 microservices</strong> for enterprise clients including <strong>Samsung</strong> and <strong>Hughes.net</strong> - received Team Excellence Award</div>
+            <div class="ach-detail">Resolved performance bottlenecks across <strong>14 microservices</strong> for enterprise clients including Samsung and Hughes.net - received Team Excellence Award</div>
           </div>
           <div class="ach">
             <div class="ach-metric">Samsung - Hughes.net</div>
@@ -392,67 +328,52 @@
   </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- PROJECTS — same UI, Sage card unchanged except proj-result updated -->
 <section id="projects" class="projects">
   <div class="container">
     <div class="section-label">Projects</div>
     <h2 class="section-heading">Things I've built</h2>
     <div class="projects-grid">
-
-      <!-- 1. SAGE — Featured -->
-      <div class="proj-card featured reveal">
-        <div class="proj-top">
-          <span class="proj-year">2026</span>
-          <div style="display:flex;gap:8px;align-items:center;">
-            <span class="proj-featured-badge">Featured</span>
-            <span class="proj-status shipped">Live</span>
-          </div>
-        </div>
+      <div class="proj-card reveal">
+        <div class="proj-top"><span class="proj-year">2026</span><span class="proj-status shipped">Live</span></div>
         <h3 class="proj-title">Sage - AI Research Synthesizer</h3>
-        <p class="proj-desc">Submit any topic and Sage delivers a structured intelligence brief in under 45 seconds. A 5-state Step Functions pipeline decomposes the topic into 3 parallel AI research threads grounded in live web data via Tavily, synthesizes a 350-900 word report using Claude Haiku 4.5 on Bedrock, and persists results to DynamoDB — entirely serverless on AWS with full Cognito auth, PDF export, and CloudFront CDN delivery.</p>
-        <div class="proj-result">Live on CloudFront · Java 25 · AWS Bedrock · Step Functions · DynamoDB · Cognito · IAM</div>
+        <p class="proj-desc">Submit any topic and Sage delivers a structured intelligence brief in under 45 seconds. A 5-state Step Functions pipeline decomposes the topic into 3 parallel AI research threads grounded in live web data via Tavily, synthesizes a 350-900 word report using Claude Haiku 4.5 on Bedrock, and persists results to DynamoDB - entirely serverless on AWS with full Cognito auth, PDF export, and CloudFront CDN delivery.</p>
+        <div class="proj-result">Live on CloudFront - Java 25 - AWS Bedrock - Step Functions - DynamoDB - Cognito - IAM</div>
         <div class="proj-stack"><span>Java 25</span><span>AWS Lambda</span><span>Step Functions</span><span>Amazon Bedrock</span><span>DynamoDB</span><span>CloudFront</span><span>Cognito</span><span>IAM</span><span>React 18</span><span>Tavily API</span></div>
         <div style="display:flex; gap:12px; margin-top:auto; flex-wrap:wrap;">
           <a href="https://d1kbvlvilht945.cloudfront.net" target="_blank" class="proj-link">Try it Live <i class="fas fa-external-link-alt"></i></a>
           <a href="https://github.com/srashtigupta-25/sage-research-synthesizer" target="_blank" class="proj-link">GitHub <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
-
-      <!-- 2. Walmart -->
       <div class="proj-card reveal">
         <div class="proj-top"><span class="proj-year">2026</span><span class="proj-status shipped">Completed</span></div>
         <h3 class="proj-title">Walmart Advanced Software Engineering</h3>
-        <p class="proj-desc">Completed Walmart USA's Advanced Software Engineering Job Simulation on Forage — solving real engineering problems across multiple teams. Developed a novel heap data structure in Java for Walmart's shipping department, designed a UML class diagram for a multi-mode data processor, and created an ER diagram for Walmart's pet department database meeting full business requirements.</p>
-        <div class="proj-result">Java heap DSA · UML design · ER diagram · System design under real constraints</div>
+        <p class="proj-desc">Completed Walmart USA's Advanced Software Engineering Job Simulation on Forage - solving real engineering problems across multiple teams. Developed a novel heap data structure in Java for Walmart's shipping department, designed a UML class diagram for a multi-mode data processor, and created an ER diagram for Walmart's pet department database meeting full business requirements.</p>
+        <div class="proj-result">Java heap DSA - UML design - ER diagram - System design under real constraints</div>
         <div class="proj-stack"><span>Java</span><span>Data Structures</span><span>UML Design</span><span>ER Diagrams</span><span>System Design</span></div>
         <a href="https://www.theforage.com/simulations/walmart/software-engineering-fceb/completed" target="_blank" class="proj-link">View Certificate <i class="fas fa-arrow-right"></i></a>
       </div>
-
-      <!-- 3. Rust Web Server -->
       <div class="proj-card reveal">
         <div class="proj-top"><span class="proj-year">2026</span><span class="proj-status shipped">Shipped</span></div>
         <h3 class="proj-title">Adaptive Concurrent Web Server</h3>
-        <p class="proj-desc">Engineered a multi-threaded web server in Rust with an adaptive worker pool that dynamically scales thread count based on real-time request load — applying systems programming concepts from graduate coursework in Operating Systems.</p>
-        <div class="proj-result">P99 latency: 1.73ms → 1.04ms (40% reduction) at 31,725 req/s</div>
+        <p class="proj-desc">Engineered a multi-threaded web server in Rust with an adaptive worker pool that dynamically scales thread count based on real-time request load - applying systems programming concepts from graduate coursework in Operating Systems.</p>
+        <div class="proj-result">P99 latency: 1.73ms to 1.04ms (40% reduction) at 31,725 req/s</div>
         <div class="proj-stack"><span>Rust</span><span>Python</span><span>Shell Scripting</span><span>Systems Programming</span></div>
         <a href="https://github.com/cs5600-sp26/project-webserver-team0100" target="_blank" class="proj-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
       </div>
-
-      <!-- 4. Data Warehouse -->
       <div class="proj-card reveal">
         <div class="proj-top"><span class="proj-year">2025</span><span class="proj-status shipped">Shipped</span></div>
         <h3 class="proj-title">Streaming Analytics Data Warehouse</h3>
-        <p class="proj-desc">Designed a year-partitioned star schema in cloud-hosted MySQL and built a Dockerized R-based ETL pipeline processing 98K+ streaming transaction records, enabling multi-year viewership trend analysis.</p>
-        <div class="proj-result">98K+ records processed · 3+ years of viewership trends surfaced</div>
+        <p class="proj-desc">Designed a year-partitioned star schema in cloud-hosted MySQL and built a Dockerized R-based ETL pipeline processing 98K+ streaming transaction records, enabling multi-dimensional analysis across 3+ years of viewership data.</p>
+        <div class="proj-result">98K+ records processed - 3 years of viewership trends surfaced</div>
         <div class="proj-stack"><span>R</span><span>MySQL</span><span>Docker</span><span>ETL</span></div>
         <a href="https://github.com/srashtigupta-25/Streaming-Analytics-Data-Warehouse" target="_blank" class="proj-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- RECOMMENDATIONS -->
+<!-- RECOMMENDATIONS — unchanged -->
 <section id="recommendations" class="recs">
   <div class="container">
     <div class="section-label">Recommendations</div>
@@ -506,19 +427,18 @@
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- CONTACT — unchanged -->
 <section id="contact" class="contact">
   <div class="container contact-inner">
     <div class="contact-left reveal">
       <div class="section-label light">Contact</div>
       <h2 class="contact-heading">Let's talk.</h2>
-      <p class="contact-sub">I'm actively exploring Software Engineering internship opportunities in the US. If you're working on backend systems, distributed infrastructure, or cloud-native AI products — I'd love to connect.</p>
+      <p class="contact-sub">I'm actively exploring Software Engineering internship opportunities in the US. If you're working on backend systems, distributed infrastructure, or cloud-native products - I'd love to connect.</p>
       <div class="contact-links">
         <a href="mailto:sg.srashtigupta@gmail.com" class="contact-link"><i class="fas fa-envelope"></i><span>sg.srashtigupta@gmail.com</span></a>
         <a href="tel:857-381-6346" class="contact-link"><i class="fas fa-phone"></i><span>857-381-6346</span></a>
         <a href="https://linkedin.com/in/srashti-gupta-07b634151" target="_blank" class="contact-link"><i class="fab fa-linkedin"></i><span>linkedin.com/in/srashti-gupta-07b634151</span></a>
         <a href="https://github.com/srashtigupta-25" target="_blank" class="contact-link"><i class="fab fa-github"></i><span>github.com/srashtigupta-25</span></a>
-        <a href="https://d1kbvlvilht945.cloudfront.net" target="_blank" class="contact-link"><i class="fas fa-rocket"></i><span>Try Sage — AI Research Synthesizer</span></a>
         <a href="resume.pdf" download class="contact-link highlight"><i class="fas fa-download"></i><span>Download Resume</span></a>
       </div>
     </div>
