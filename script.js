@@ -1,115 +1,94 @@
-/* ============================================================
-   SRASHTI GUPTA PORTFOLIO - SCRIPT
-   ============================================================ */
+const header = document.getElementById("siteHeader");
+const progress = document.getElementById("pageProgress");
+const menuButton = document.getElementById("menuButton");
+const navLinks = document.getElementById("navLinks");
+const navAnchors = [...document.querySelectorAll(".nav-links a")];
+const sections = [...document.querySelectorAll("main section[id]")];
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-// Scroll Progress Bar
-function updateScrollProgress() {
-  const total = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
-  const bar = document.getElementById('scrollProgress');
-  if (bar) bar.style.width = pct + '%';
-}
+function updatePageState() {
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  const percent = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+  progress.style.width = `${percent}%`;
+  header.classList.toggle("scrolled", window.scrollY > 24);
 
-// Navbar scroll state
-function updateNav() {
-  const navbar = document.getElementById('navbar');
-  if (!navbar) return;
-  navbar.classList.toggle('scrolled', window.scrollY > 60);
-}
-
-// Active nav link
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-link');
-
-function setActiveNav() {
-  const scrollY = window.scrollY + window.innerHeight / 3;
-  sections.forEach(section => {
-    const top = section.offsetTop;
-    const bottom = top + section.offsetHeight;
-    const id = section.getAttribute('id');
-    if (scrollY >= top && scrollY < bottom) {
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + id) {
-          link.classList.add('active');
-        }
-      });
+  const marker = window.scrollY + window.innerHeight * 0.35;
+  let current = "";
+  sections.forEach((section) => {
+    if (marker >= section.offsetTop && marker < section.offsetTop + section.offsetHeight) {
+      current = section.id;
     }
   });
+  navAnchors.forEach((link) => link.classList.toggle("active", link.hash === `#${current}`));
 }
 
-// Mobile Menu
-const menuToggle = document.getElementById('menuToggle');
-const navLinksContainer = document.getElementById('navLinks');
-
-if (menuToggle && navLinksContainer) {
-  menuToggle.addEventListener('click', () => {
-    navLinksContainer.classList.toggle('mobile-active');
-    menuToggle.classList.toggle('active');
-  });
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      navLinksContainer.classList.remove('mobile-active');
-      menuToggle.classList.remove('active');
-    });
-  });
+function closeMenu() {
+  navLinks.classList.remove("open");
+  menuButton.classList.remove("open");
+  menuButton.setAttribute("aria-expanded", "false");
+  menuButton.setAttribute("aria-label", "Open navigation");
+  document.body.classList.remove("menu-open");
 }
 
-// Smooth Scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    const href = this.getAttribute('href');
-    if (href === '#') return;
-    const target = document.querySelector(href);
-    if (target) {
-      e.preventDefault();
-      window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
-    }
-  });
+menuButton.addEventListener("click", () => {
+  const open = !navLinks.classList.contains("open");
+  navLinks.classList.toggle("open", open);
+  menuButton.classList.toggle("open", open);
+  menuButton.setAttribute("aria-expanded", String(open));
+  menuButton.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+  document.body.classList.toggle("menu-open", open);
 });
 
-// Reveal on Scroll
+navAnchors.forEach((link) => link.addEventListener("click", closeMenu));
+window.addEventListener("scroll", updatePageState, { passive: true });
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 780) closeMenu();
+  updatePageState();
+});
+
 const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      // Stagger siblings
-      const siblings = entry.target.parentElement
-        ? [...entry.target.parentElement.querySelectorAll('.reveal')]
-        : [];
-      const idx = Math.max(0, siblings.indexOf(entry.target));
-      setTimeout(() => entry.target.classList.add('visible'), idx * 80);
-      revealObserver.unobserve(entry.target);
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add("visible");
+    revealObserver.unobserve(entry.target);
+  });
+}, { threshold: 0.1, rootMargin: "0px 0px -35px" });
+
+document.querySelectorAll(".reveal").forEach((element) => {
+  if (reducedMotion) element.classList.add("visible");
+  else revealObserver.observe(element);
+});
+
+const counters = document.querySelectorAll("[data-count]");
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+    const element = entry.target;
+    const target = Number(element.dataset.count);
+    const suffix = element.dataset.suffix || "";
+    const start = performance.now();
+    const duration = 950;
+    function tick(now) {
+      const elapsed = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - elapsed, 3);
+      element.textContent = `${Math.round(target * eased)}${suffix}`;
+      if (elapsed < 1) requestAnimationFrame(tick);
     }
+    requestAnimationFrame(tick);
+    counterObserver.unobserve(element);
   });
-}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+}, { threshold: 0.5 });
 
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+if (!reducedMotion) counters.forEach((counter) => counterObserver.observe(counter));
 
-// Contact Form
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name    = contactForm.querySelector('input[type="text"]').value.trim();
-    const email   = contactForm.querySelector('input[type="email"]').value.trim();
-    const message = contactForm.querySelector('textarea').value.trim();
-    if (!name || !email || !message) return;
-    const subject = encodeURIComponent('Portfolio message from ' + name);
-    const body    = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + message);
-    window.location.href = 'mailto:sg.srashtigupta@gmail.com?subject=' + subject + '&body=' + body;
-    contactForm.reset();
-  });
+const glow = document.querySelector(".cursor-glow");
+if (window.matchMedia("(pointer: fine)").matches && !reducedMotion) {
+  window.addEventListener("pointermove", (event) => {
+    glow.style.left = `${event.clientX}px`;
+    glow.style.top = `${event.clientY}px`;
+    glow.style.opacity = "1";
+  }, { passive: true });
 }
 
-// Scroll listeners
-window.addEventListener('scroll', () => {
-  updateScrollProgress();
-  updateNav();
-  setActiveNav();
-}, { passive: true });
-
-window.addEventListener('load', () => {
-  updateScrollProgress();
-  updateNav();
-  setActiveNav();
-});
+document.getElementById("year").textContent = new Date().getFullYear();
+updatePageState();
