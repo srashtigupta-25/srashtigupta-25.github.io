@@ -1,0 +1,500 @@
+import React, { useEffect, useMemo, useRef, useState } from "react";
+
+const navItems = [
+  ["work", "Work"],
+  ["experience", "Experience"],
+  ["about", "About"],
+  ["contact", "Contact"],
+];
+
+const projects = [
+  {
+    id: "alpha",
+    index: "01",
+    label: "Multi-agent AI · Hackathon",
+    title: "Alpha Sign",
+    description:
+      "A team-built hackathon platform where four specialist agents turn one ticker into narrative research, quantitative signals, regime analysis, and an executive report. I owned the Narrative/News Agent workflow.",
+    outcomes: ["Owned Narrative/News Agent", "4 collaborating agents", "Live event streaming"],
+    stack: ["Next.js", "TypeScript", "Python", "SSE", "Docker"],
+    live: "https://alpha-sign-zeta.vercel.app",
+    github: "https://github.com/Dankguy17/AlphaSign",
+    repositoryLabel: "Team Repository",
+    theme: "blue",
+  },
+  {
+    id: "sage",
+    index: "02",
+    label: "AI + Cloud",
+    title: "Sage Research Synthesizer",
+    description:
+      "A serverless research application that decomposes a question into parallel AI research threads and returns a structured brief in under 45 seconds.",
+    outcomes: ["60% faster workflow", "3 parallel research paths", "5-state cloud pipeline"],
+    stack: ["Java 25", "AWS Bedrock", "Lambda", "Step Functions", "DynamoDB"],
+    live: "https://d1kbvlvilht945.cloudfront.net",
+    github: "https://github.com/srashtigupta-25/sage-research-synthesizer",
+    theme: "coral",
+  },
+  {
+    id: "server",
+    index: "03",
+    label: "Systems engineering",
+    title: "Adaptive Concurrent Web Server",
+    description:
+      "A multithreaded Rust server with an adaptive worker pool designed to stay responsive when request traffic becomes bursty.",
+    outcomes: ["40% lower P99 latency", "31,725 requests/sec", "1.04 ms P99"],
+    stack: ["Rust", "Python", "Concurrency", "Benchmarking"],
+    github: "https://github.com/cs5600-sp26/project-webserver-team0100",
+    caseStudy: "/StreetLegal-Webserver-presentation.pdf",
+    theme: "green",
+  },
+  {
+    id: "warehouse",
+    index: "04",
+    label: "Data engineering",
+    title: "Streaming Analytics Warehouse",
+    description:
+      "A Dockerized ETL pipeline and partitioned star schema for exploring multi-year viewing patterns across streaming transaction data.",
+    outcomes: ["98K+ records", "3+ years of trends", "Reproducible ETL"],
+    stack: ["R", "MySQL", "Docker", "ETL"],
+    github: "https://github.com/srashtigupta-25/Streaming-Analytics-Data-Warehouse",
+    theme: "violet",
+  },
+];
+
+const roles = [
+  {
+    company: "NAB",
+    logo: "/nab.png",
+    role: "Senior Software Engineer",
+    period: "2023 — 2025",
+    summary:
+      "Owned performance, modernization, and developer-experience initiatives across banking platforms.",
+    impact: [
+      ["35%", "lower API latency across 20+ services handling 1M+ requests daily"],
+      ["20", "banking microservices migrated from Java 8 to Java 17 in four months"],
+      ["80%", "greater deployment visibility for more than 20 engineering teams"],
+    ],
+    stack: ["Java 17", "Spring Boot", "AWS", "Kubernetes", "Kafka", "Redis"],
+    awards: ["STAR Award", "SPOT Award"],
+  },
+  {
+    company: "IBM",
+    logo: "/ibm.jpeg",
+    role: "Software Engineer",
+    period: "2021 — 2022",
+    summary:
+      "Built event-driven services, automated releases, and shipped full-stack product features.",
+    impact: [
+      ["45%", "system performance improvement through resilient microservice patterns"],
+      ["40%", "faster release cycles across more than 10 services"],
+      ["40%", "increase in client-portal engagement after a full-stack launch"],
+    ],
+    stack: ["Java", "Spring Data", "React", "PostgreSQL", "Docker", "Jenkins"],
+    awards: [],
+  },
+  {
+    company: "Capgemini",
+    logo: "/capgemini.png",
+    role: "Software Engineer",
+    period: "2019 — 2021",
+    summary:
+      "Improved enterprise services for clients including Samsung and HughesNet.",
+    impact: [
+      ["25%", "lower response time across 14 production microservices"],
+      ["30%", "faster data retrieval after SQL query optimization"],
+      ["98%", "automated test coverage with TestNG and Mockito"],
+    ],
+    stack: ["Java", "J2EE", "Node.js", "Spring Boot", "SQL", "Mockito"],
+    awards: ["Team Excellence Award"],
+  },
+];
+
+const skillGroups = [
+  ["Languages", "Java · Python · Rust · JavaScript · TypeScript · SQL · C++"],
+  ["Backend", "Spring Boot · REST APIs · Microservices · JPA · Hibernate · FastAPI"],
+  ["Cloud", "AWS · Docker · Kubernetes · Kafka · CI/CD · Linux"],
+  ["Data", "PostgreSQL · MySQL · MongoDB · Redis · DynamoDB · Oracle"],
+];
+
+function Arrow({ direction = "up" }) {
+  return <span aria-hidden="true">{direction === "down" ? "↓" : "↗"}</span>;
+}
+
+function NetworkCanvas() {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const context = canvas.getContext("2d");
+    let width = 0;
+    let height = 0;
+    let frame = 0;
+    let points = [];
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function resize() {
+      const rect = canvas.getBoundingClientRect();
+      const ratio = Math.min(window.devicePixelRatio || 1, 2);
+      width = rect.width;
+      height = rect.height;
+      canvas.width = width * ratio;
+      canvas.height = height * ratio;
+      context.setTransform(ratio, 0, 0, ratio, 0, 0);
+      const count = Math.max(26, Math.floor(width / 32));
+      points = Array.from({ length: count }, (_, index) => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.16,
+        vy: (Math.random() - 0.5) * 0.16,
+        r: index % 8 === 0 ? 2.8 : 1.4,
+      }));
+    }
+
+    function draw() {
+      context.clearRect(0, 0, width, height);
+      points.forEach((point, index) => {
+        if (!reduced) {
+          point.x += point.vx;
+          point.y += point.vy;
+          if (point.x < 0 || point.x > width) point.vx *= -1;
+          if (point.y < 0 || point.y > height) point.vy *= -1;
+        }
+
+        points.slice(index + 1).forEach((other) => {
+          const distance = Math.hypot(point.x - other.x, point.y - other.y);
+          if (distance < 125) {
+            context.beginPath();
+            context.moveTo(point.x, point.y);
+            context.lineTo(other.x, other.y);
+            context.strokeStyle = `rgba(35, 82, 166, ${0.13 * (1 - distance / 125)})`;
+            context.lineWidth = 0.8;
+            context.stroke();
+          }
+        });
+
+        context.beginPath();
+        context.arc(point.x, point.y, point.r, 0, Math.PI * 2);
+        context.fillStyle = point.r > 2 ? "rgba(255, 109, 73, .55)" : "rgba(29, 71, 154, .42)";
+        context.fill();
+      });
+      frame = requestAnimationFrame(draw);
+    }
+
+    resize();
+    draw();
+    window.addEventListener("resize", resize);
+    return () => {
+      window.removeEventListener("resize", resize);
+      cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  return <canvas className="network-canvas" ref={canvasRef} aria-hidden="true" />;
+}
+
+function ProjectVisual({ project }) {
+  if (project.id === "alpha") {
+    return (
+      <div className="visual alpha-visual">
+        <div className="visual-bar"><span /><span /><span /><b>analysis.session</b></div>
+        <div className="agent-map">
+          <div className="agent-center"><img src="/alpha-sign-logo.webp" alt="" /></div>
+          <div className="orbit orbit-one" />
+          <div className="orbit orbit-two" />
+          {["Narrative", "Quant", "Regime", "Executive"].map((agent, index) => (
+            <div className={`agent-node node-${index + 1}`} key={agent}><i />{agent}</div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (project.id === "sage") {
+    return (
+      <div className="visual sage-visual">
+        <div className="pipeline-head"><span>research.pipeline</span><b>RUNNING</b></div>
+        <div className="pipeline">
+          <div className="pipe-block primary">Question</div>
+          <span>→</span>
+          <div className="parallel-stack">
+            <div>Research 01</div><div>Research 02</div><div>Research 03</div>
+          </div>
+          <span>→</span>
+          <div className="pipe-block report">Brief</div>
+        </div>
+        <div className="pipeline-progress"><i /><span>42 sec</span></div>
+      </div>
+    );
+  }
+
+  if (project.id === "server") {
+    return (
+      <div className="visual server-visual">
+        <div className="chart-header"><span>P99 latency under load</span><b>31,725 req/s</b></div>
+        <div className="chart-grid">
+          <div className="chart-line line-before"><span>1.73 ms</span></div>
+          <div className="chart-line line-after"><span>1.04 ms</span></div>
+        </div>
+        <div className="chart-legend"><span><i className="before-dot" /> Before</span><span><i /> Adaptive pool</span></div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="visual data-visual">
+      <div className="data-head"><span>stream_analytics.sql</span><b>98,000+ rows</b></div>
+      <div className="data-bars">
+        {[42, 68, 51, 82, 65, 96, 73, 88, 61, 100, 76, 91].map((height, index) => (
+          <i key={index} style={{ "--height": `${height}%` }} />
+        ))}
+      </div>
+      <div className="data-years"><span>2023</span><span>2024</span><span>2025</span></div>
+    </div>
+  );
+}
+
+function CommandPalette({ open, onClose }) {
+  useEffect(() => {
+    if (!open) return undefined;
+    const handler = (event) => event.key === "Escape" && onClose();
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [open, onClose]);
+
+  if (!open) return null;
+  return (
+    <div className="command-overlay" onMouseDown={onClose}>
+      <div className="command-box" onMouseDown={(event) => event.stopPropagation()}>
+        <div className="command-input"><span>⌕</span><input autoFocus placeholder="Jump to a section…" /></div>
+        <div className="command-list">
+          {navItems.map(([id, label], index) => (
+            <a key={id} href={`#${id}`} onClick={onClose}>
+              <span>0{index + 1}</span><b>{label}</b><kbd>↵</kbd>
+            </a>
+          ))}
+          <a href="/resume.pdf" target="_blank" rel="noreferrer" onClick={onClose}>
+            <span>05</span><b>Open résumé</b><kbd>↗</kbd>
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function App() {
+  const [activeProject, setActiveProject] = useState(0);
+  const [paletteOpen, setPaletteOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("work");
+  const currentProject = projects[activeProject];
+
+  useEffect(() => {
+    const onKeyDown = (event) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        setPaletteOpen((value) => !value);
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.find((entry) => entry.isIntersecting);
+        if (visible?.target.id) setActiveSection(visible.target.id);
+      },
+      { rootMargin: "-30% 0px -60%" },
+    );
+    document.querySelectorAll("main section[id]").forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  const projectLinks = useMemo(() => {
+    const links = [];
+    if (currentProject.live) links.push(["Live product", currentProject.live]);
+    if (currentProject.github) links.push([currentProject.repositoryLabel || "Repository", currentProject.github]);
+    if (currentProject.caseStudy) links.push(["Case study", currentProject.caseStudy]);
+    return links;
+  }, [currentProject]);
+
+  return (
+    <>
+      <a className="skip-link" href="#main">Skip to content</a>
+      <CommandPalette open={paletteOpen} onClose={() => setPaletteOpen(false)} />
+
+      <header className="site-header">
+        <a className="brand" href="#top" aria-label="Srashti Gupta home">
+          <span>SG</span><b>Srashti Gupta</b>
+        </a>
+        <nav className={menuOpen ? "open" : ""} aria-label="Primary navigation">
+          {navItems.map(([id, label]) => (
+            <a className={activeSection === id ? "active" : ""} href={`#${id}`} key={id} onClick={() => setMenuOpen(false)}>{label}</a>
+          ))}
+        </nav>
+        <div className="header-actions">
+          <button className="command-button" onClick={() => setPaletteOpen(true)}><span>Search</span><kbd>⌘ K</kbd></button>
+          <a className="resume-button" href="/resume.pdf" target="_blank" rel="noreferrer">Résumé <Arrow /></a>
+          <button className={`menu-toggle ${menuOpen ? "open" : ""}`} aria-label="Toggle navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen((value) => !value)}><span /><span /></button>
+        </div>
+      </header>
+
+      <main id="main">
+        <section className="hero" id="top">
+          <NetworkCanvas />
+          <div className="hero-grid" />
+          <div className="hero-content">
+            <div className="hero-copy">
+              <div className="availability"><i /> Open to software engineering internships</div>
+              <p className="hero-kicker">Software engineer · Systems builder</p>
+              <h1>Engineering software that performs <em>under pressure.</em></h1>
+              <p className="hero-summary">
+                I bring five-plus years of production experience to distributed systems, cloud platforms, and full-stack products—then measure whether the work actually made things better.
+              </p>
+              <div className="hero-actions">
+                <a className="primary-button" href="#work">Explore selected work <Arrow direction="down" /></a>
+                <a className="secondary-button" href="mailto:sg.srashtigupta@gmail.com">Start a conversation <Arrow /></a>
+              </div>
+              <div className="proof-row">
+                <div><strong>35%</strong><span>API latency reduced</span></div>
+                <div><strong>1M+</strong><span>requests handled daily</span></div>
+                <div><strong>3×</strong><span>industry awards</span></div>
+              </div>
+            </div>
+
+            <div className="hero-system">
+              <div className="portrait-card">
+                <div className="portrait-top"><span>engineer.profile</span><b>ONLINE</b></div>
+                <img src="/profile-photo.png" alt="Srashti Gupta" />
+                <div className="portrait-meta"><span>Boston, MA</span><span>MS CS · 4.0</span></div>
+              </div>
+              <div className="system-card system-card-one"><span>Core</span><b>Java · Spring · AWS</b></div>
+              <div className="system-card system-card-two"><span>Focus</span><b>Distributed systems</b></div>
+              <div className="system-card system-card-three"><span>Build mode</span><b>Measure → improve → ship</b></div>
+            </div>
+          </div>
+          <a className="scroll-cue" href="#work"><span>Scroll to work</span><i /></a>
+        </section>
+
+        <section className="work section" id="work">
+          <div className="section-intro">
+            <div><span className="section-number">01</span><p>Selected work</p></div>
+            <h2>Projects with an engineering point of view.</h2>
+            <p className="section-copy">Each project tackles a different constraint: orchestration, speed, concurrency, or data scale.</p>
+          </div>
+
+          <div className="project-shell">
+            <div className="project-tabs" role="tablist" aria-label="Projects">
+              {projects.map((project, index) => (
+                <button
+                  className={activeProject === index ? "active" : ""}
+                  key={project.id}
+                  onClick={() => setActiveProject(index)}
+                  role="tab"
+                  aria-selected={activeProject === index}
+                >
+                  <span>{project.index}</span><b>{project.title}</b><i />
+                </button>
+              ))}
+            </div>
+
+            <article className={`project-stage theme-${currentProject.theme}`} key={currentProject.id}>
+              <ProjectVisual project={currentProject} />
+              <div className="project-content">
+                <div className="project-eyebrow"><span>{currentProject.index}</span>{currentProject.label}</div>
+                <h3>{currentProject.title}</h3>
+                <p>{currentProject.description}</p>
+                <div className="outcome-grid">
+                  {currentProject.outcomes.map((outcome) => <span key={outcome}>{outcome}</span>)}
+                </div>
+                <div className="stack-row">{currentProject.stack.map((item) => <span key={item}>{item}</span>)}</div>
+                <div className="project-links">
+                  {projectLinks.map(([label, href]) => <a key={label} href={href} target="_blank" rel="noreferrer">{label} <Arrow /></a>)}
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section className="experience section" id="experience">
+          <div className="section-intro compact">
+            <div><span className="section-number">02</span><p>Experience</p></div>
+            <h2>Production engineering, measured in outcomes.</h2>
+          </div>
+          <div className="timeline">
+            {roles.map((role, index) => (
+              <article className="role" key={role.company}>
+                <div className="role-index"><span>0{index + 1}</span><i /></div>
+                <div className="company-mark"><img src={role.logo} alt={`${role.company} logo`} /></div>
+                <div className="role-heading">
+                  <p>{role.period}</p><h3>{role.role}</h3><span>{role.company}</span>
+                  <p className="role-summary">{role.summary}</p>
+                  {role.awards.length > 0 && <div className="awards">{role.awards.map((award) => <b key={award}>◆ {award}</b>)}</div>}
+                </div>
+                <div className="impact-list">
+                  {role.impact.map(([metric, text]) => (
+                    <div key={metric + text}><strong>{metric}</strong><span>{text}</span></div>
+                  ))}
+                  <div className="role-stack">{role.stack.map((item) => <span key={item}>{item}</span>)}</div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="about section" id="about">
+          <div className="about-grid">
+            <div className="about-copy">
+              <div className="section-label"><span className="section-number">03</span><p>About</p></div>
+              <h2>I care about the seam between architecture and experience.</h2>
+              <p>Reliable APIs, observable systems, thoughtful interfaces, and deployment paths that do not surprise the next engineer—those details are part of the product.</p>
+              <p>After building enterprise software at NAB, IBM, and Capgemini, I am pursuing an MS in Computer Science at Northeastern University and looking for an internship where production judgment is useful from day one.</p>
+              <a className="inline-link" href="/resume.pdf" target="_blank" rel="noreferrer">Read the full résumé <Arrow /></a>
+            </div>
+            <div className="about-console">
+              <div className="console-head"><span /><span /><span /><b>capabilities.json</b></div>
+              <pre>{`{
+  "education": {
+    "program": "MS Computer Science",
+    "school": "Northeastern University",
+    "gpa": 4.0
+  },
+  "experience": "5+ years",
+  "principles": [
+    "measure the bottleneck",
+    "design for failure",
+    "make the system legible"
+  ]
+}`}</pre>
+              <div className="skill-table">
+                {skillGroups.map(([label, skills]) => <div key={label}><strong>{label}</strong><span>{skills}</span></div>)}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="contact section" id="contact">
+          <NetworkCanvas />
+          <div className="contact-inner">
+            <span className="section-number">04</span>
+            <p>Let’s build something dependable.</p>
+            <h2>Looking for an engineer who can work above and below the interface?</h2>
+            <div className="contact-actions">
+              <a className="primary-button" href="mailto:sg.srashtigupta@gmail.com">Email Srashti <Arrow /></a>
+              <a href="https://github.com/srashtigupta-25" target="_blank" rel="noreferrer">GitHub <Arrow /></a>
+              <a href="https://linkedin.com/in/srashti-gupta-07b634151" target="_blank" rel="noreferrer">LinkedIn <Arrow /></a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <span>© 2026 Srashti Gupta</span>
+        <span>Built with React · designed for clarity</span>
+        <a href="#top">Back to top ↑</a>
+      </footer>
+    </>
+  );
+}
