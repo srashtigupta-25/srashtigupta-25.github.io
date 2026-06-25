@@ -11,13 +11,13 @@ const navItems = [
 const projects = [
   {
     id: "alpha",
-    index: "01",
+    index: "02",
     label: "Multi-agent AI · Hackathon",
     title: "Alpha Sign",
     description:
-      "A team-built hackathon platform where four specialist agents turn one ticker into narrative research, quantitative signals, regime analysis, and an executive report. I owned the Narrative/News Agent workflow.",
-    outcomes: ["Owned Narrative/News Agent", "4 collaborating agents", "Live event streaming"],
-    stack: ["Next.js", "TypeScript", "Python", "SSE", "Docker"],
+      "A team-built LLM application where four specialist agents turn one ticker into narrative research, quantitative signals, regime analysis, and an executive report. I owned the Narrative/News Agent and co-developed the LangChain/LangGraph agent layer.",
+    outcomes: ["Owned Narrative/News Agent", "4-agent workflow", "Co-built LangChain orchestration"],
+    stack: ["Python", "LangChain", "LangGraph", "LLM APIs", "Next.js", "SSE"],
     live: "https://alpha-sign-zeta.vercel.app",
     github: "https://github.com/Dankguy17/AlphaSign",
     repositoryLabel: "Team Repository",
@@ -25,13 +25,13 @@ const projects = [
   },
   {
     id: "sage",
-    index: "02",
-    label: "AI + Cloud",
+    index: "01",
+    label: "Production GenAI · AWS",
     title: "Sage Research Synthesizer",
     description:
-      "A serverless research application that decomposes a question into parallel AI research threads and returns a structured brief in under 45 seconds.",
-    outcomes: ["60% faster workflow", "3 parallel research paths", "5-state cloud pipeline"],
-    stack: ["Java 25", "AWS Bedrock", "Lambda", "Step Functions", "DynamoDB"],
+      "A production-style serverless LLM system built in Java that grounds research in live web data, runs three Claude threads in parallel, and returns a structured brief in under 45 seconds.",
+    outcomes: ["Brief in <45 seconds", "60% faster through parallelism", "3 grounded LLM research threads"],
+    stack: ["Java 25", "Amazon Bedrock", "Claude", "AWS Lambda", "Step Functions", "Tavily", "DynamoDB"],
     live: "https://d1kbvlvilht945.cloudfront.net",
     github: "https://github.com/srashtigupta-25/sage-research-synthesizer",
     theme: "coral",
@@ -134,6 +134,14 @@ const skillGroups = [
 ];
 
 const techCategories = {
+  "AI & LLM engineering": [
+    ["LangChain", "langchain.svg"],
+    ["LangGraph", "langgraph.svg"],
+    ["Amazon Bedrock", "bedrock.svg"],
+    ["Claude", "anthropic.svg"],
+    ["LLM APIs", "llmapi.svg"],
+    ["Multi-agent AI", "multiagent.svg"],
+  ],
   "Core engineering": [
     ["Java", "java.svg"],
     ["Python", "python.svg"],
@@ -334,11 +342,11 @@ function CommandPalette({ open, onClose }) {
 }
 
 export default function App() {
-  const [activeProject, setActiveProject] = useState(0);
+  const [activeProject, setActiveProject] = useState(1);
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("work");
-  const [activeTechCategory, setActiveTechCategory] = useState("Core engineering");
+  const [activeTechCategory, setActiveTechCategory] = useState("AI & LLM engineering");
   const currentProject = projects[activeProject];
 
   const handleContactSubmit = (event) => {
@@ -411,19 +419,22 @@ export default function App() {
           <div className="hero-content">
             <div className="hero-copy">
               <div className="availability"><i /> Open to software engineering internships</div>
-              <p className="hero-kicker">Software engineer · Systems builder</p>
-              <h1>Engineering software that performs <em>under pressure.</em></h1>
+              <p className="hero-kicker">Software engineer · AI systems builder</p>
+              <h1>Production engineering for <em>AI-powered products.</em></h1>
               <p className="hero-summary">
-                I bring five-plus years of production experience to distributed systems, cloud platforms, and full-stack products—then measure whether the work actually made things better.
+                Five-plus years building distributed platforms with Java, Spring Boot, and AWS—now applying that foundation to LLM workflows, multi-agent systems, and serverless AI.
               </p>
+              <div className="hero-capabilities" aria-label="Core capabilities">
+                <span>Java</span><span>Python</span><span>Spring Boot</span><span>AWS</span><span>LangChain</span><span>LLM Systems</span>
+              </div>
               <div className="hero-actions">
-                <a className="primary-button" href="#work">Explore selected work <Arrow direction="down" /></a>
+                <a className="primary-button" href="#work">Explore AI projects <Arrow direction="down" /></a>
                 <a className="secondary-button" href="mailto:sg.srashtigupta@gmail.com">Start a conversation <Arrow /></a>
               </div>
               <div className="proof-row">
-                <div><strong>35%</strong><span>API latency reduced</span></div>
-                <div><strong>1M+</strong><span>requests handled daily</span></div>
-                <div><strong>3×</strong><span>industry awards</span></div>
+                <div><strong>5+ years</strong><span>production engineering</span></div>
+                <div><strong>4 agents</strong><span>coordinated in Alpha Sign</span></div>
+                <div><strong>&lt;45 sec</strong><span>Sage research brief</span></div>
               </div>
             </div>
 
@@ -433,9 +444,9 @@ export default function App() {
                 <img src="/profile-photo.png" alt="Srashti Gupta" />
                 <div className="portrait-meta"><span>Boston, MA</span><span>MS CS · 4.0</span></div>
               </div>
-              <div className="system-card system-card-one"><span>Core</span><b>Java · Spring · AWS</b></div>
-              <div className="system-card system-card-two"><span>Focus</span><b>Distributed systems</b></div>
-              <div className="system-card system-card-three"><span>Build mode</span><b>Measure → improve → ship</b></div>
+              <div className="system-card system-card-one"><span>Production core</span><b>Java · Spring · AWS</b></div>
+              <div className="system-card system-card-two"><span>AI systems</span><b>Python · LangChain · LLMs</b></div>
+              <div className="system-card system-card-three"><span>Engineering edge</span><b>Reliable systems for intelligent products</b></div>
             </div>
           </div>
           <a className="scroll-cue" href="#work"><span>Scroll to work</span><i /></a>
@@ -444,19 +455,19 @@ export default function App() {
         <section className="work section" id="work">
           <div className="section-intro">
             <div><span className="section-number">01</span><p>Selected work</p></div>
-            <h2>Projects with an engineering point of view.</h2>
-            <p className="section-copy">Each project tackles a different constraint: orchestration, speed, concurrency, or data scale.</p>
+            <h2>AI products backed by real engineering depth.</h2>
+            <p className="section-copy">Sage and Alpha Sign lead the story: LLM orchestration, grounded research, cloud architecture, and production-minded delivery.</p>
           </div>
 
           <div className="project-shell">
             <div className="project-tabs" role="tablist" aria-label="Projects">
-              {projects.map((project, index) => (
+              {[projects[1], projects[0], projects[2], projects[3]].map((project, index) => (
                 <button
-                  className={activeProject === index ? "active" : ""}
+                  className={currentProject.id === project.id ? "active" : ""}
                   key={project.id}
-                  onClick={() => setActiveProject(index)}
+                  onClick={() => setActiveProject(projects.findIndex((candidate) => candidate.id === project.id))}
                   role="tab"
-                  aria-selected={activeProject === index}
+                  aria-selected={currentProject.id === project.id}
                 >
                   <span>{project.index}</span><b>{project.title}</b><i />
                 </button>
@@ -480,6 +491,13 @@ export default function App() {
             </article>
           </div>
         </section>
+
+        <aside className="engineering-bridge" aria-label="Engineering positioning">
+          <span>Production engineering depth</span>
+          <strong>+</strong>
+          <span>Modern AI systems</span>
+          <p>I bring reliability, API design, cloud architecture, testing, and performance discipline to LLM-powered products.</p>
+        </aside>
 
         <section className="stack-section section" id="stack">
           <div className="section-intro">
