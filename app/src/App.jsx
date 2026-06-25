@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 
 const navItems = [
   ["work", "Work"],
+  ["stack", "Tech Stack"],
   ["experience", "Experience"],
   ["about", "About"],
   ["contact", "Contact"],
@@ -70,6 +71,11 @@ const roles = [
     period: "2023 — 2025",
     summary:
       "Owned performance, modernization, and developer-experience initiatives across banking platforms.",
+    scope: "20+ APIs · 20 microservices · 20+ engineering teams",
+    highlights: [
+      "Applied Redis caching, database indexing, OAuth 2.0/JWT, and AWS deployment patterns to high-volume banking APIs.",
+      "Coached five engineers on microservices and TDD while sustaining 92% code coverage.",
+    ],
     impact: [
       ["35%", "lower API latency across 20+ services handling 1M+ requests daily"],
       ["20", "banking microservices migrated from Java 8 to Java 17 in four months"],
@@ -85,6 +91,11 @@ const roles = [
     period: "2021 — 2022",
     summary:
       "Built event-driven services, automated releases, and shipped full-stack product features.",
+    scope: "10+ services · Event-driven architecture · Full-stack delivery",
+    highlights: [
+      "Designed resilient services with Circuit Breaker and Saga patterns backed by PostgreSQL.",
+      "Standardized delivery through Jenkins, Docker, and OpenAPI documentation.",
+    ],
     impact: [
       ["45%", "system performance improvement through resilient microservice patterns"],
       ["40%", "faster release cycles across more than 10 services"],
@@ -100,6 +111,11 @@ const roles = [
     period: "2019 — 2021",
     summary:
       "Improved enterprise services for clients including Samsung and HughesNet.",
+    scope: "14 microservices · Global enterprise clients · Backend performance",
+    highlights: [
+      "Diagnosed production bottlenecks across Java, J2EE, Node.js, and SQL-backed services.",
+      "Strengthened release confidence through TestNG and Mockito automation.",
+    ],
     impact: [
       ["25%", "lower response time across 14 production microservices"],
       ["30%", "faster data retrieval after SQL query optimization"],
@@ -116,6 +132,41 @@ const skillGroups = [
   ["Cloud", "AWS · Docker · Kubernetes · Kafka · CI/CD · Linux"],
   ["Data", "PostgreSQL · MySQL · MongoDB · Redis · DynamoDB · Oracle"],
 ];
+
+const techCategories = {
+  "Core engineering": [
+    ["Java", "java.svg"],
+    ["Python", "python.svg"],
+    ["Rust", "rust.svg"],
+    ["JavaScript", "javascript.svg"],
+    ["TypeScript", "typescript.svg"],
+    ["SQL", "sql.svg"],
+  ],
+  "Frameworks & APIs": [
+    ["Spring Boot", "spring.svg"],
+    ["React", "react.svg"],
+    ["Node.js", "nodejs.svg"],
+    ["FastAPI", "fastapi.svg"],
+    ["Hibernate", "hibernate.svg"],
+    ["OpenAPI", "swagger.svg"],
+  ],
+  "Cloud & platform": [
+    ["AWS", "aws.svg"],
+    ["Docker", "docker.svg"],
+    ["Kubernetes", "kubernetes.svg"],
+    ["Kafka", "kafka.svg"],
+    ["Linux", "linux.svg"],
+    ["Git", "git.svg"],
+  ],
+  "Data systems": [
+    ["PostgreSQL", "postgresql.svg"],
+    ["MySQL", "mysql.svg"],
+    ["MongoDB", "mongodb.svg"],
+    ["Redis", "redis.svg"],
+    ["DynamoDB", "dynamodb.svg"],
+    ["Oracle", "oracle.svg"],
+  ],
+};
 
 function Arrow({ direction = "up" }) {
   return <span aria-hidden="true">{direction === "down" ? "↓" : "↗"}</span>;
@@ -274,7 +325,7 @@ function CommandPalette({ open, onClose }) {
             </a>
           ))}
           <a href="/resume.pdf" target="_blank" rel="noreferrer" onClick={onClose}>
-            <span>05</span><b>Open résumé</b><kbd>↗</kbd>
+            <span>06</span><b>Open résumé</b><kbd>↗</kbd>
           </a>
         </div>
       </div>
@@ -287,7 +338,19 @@ export default function App() {
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("work");
+  const [activeTechCategory, setActiveTechCategory] = useState("Core engineering");
   const currentProject = projects[activeProject];
+
+  const handleContactSubmit = (event) => {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    const name = String(form.get("name") || "").trim();
+    const email = String(form.get("email") || "").trim();
+    const message = String(form.get("message") || "").trim();
+    const subject = encodeURIComponent(`Portfolio message from ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+    window.location.href = `mailto:sg.srashtigupta@gmail.com?subject=${subject}&body=${body}`;
+  };
 
   useEffect(() => {
     const onKeyDown = (event) => {
@@ -418,10 +481,59 @@ export default function App() {
           </div>
         </section>
 
+        <section className="stack-section section" id="stack">
+          <div className="section-intro">
+            <div><span className="section-number">02</span><p>Tech stack</p></div>
+            <h2>Tools I have used to ship production software.</h2>
+            <p className="section-copy">A working toolkit across backend engineering, cloud infrastructure, distributed systems, data, and interface development.</p>
+          </div>
+          <div className="stack-workbench">
+            <div className="stack-tabs" role="tablist" aria-label="Technology categories">
+              {Object.keys(techCategories).map((category) => (
+                <button
+                  className={activeTechCategory === category ? "active" : ""}
+                  key={category}
+                  onClick={() => setActiveTechCategory(category)}
+                  role="tab"
+                  aria-selected={activeTechCategory === category}
+                >
+                  <span>{String(Object.keys(techCategories).indexOf(category) + 1).padStart(2, "0")}</span>
+                  {category}
+                </button>
+              ))}
+            </div>
+            <div className="tech-grid" key={activeTechCategory}>
+              {techCategories[activeTechCategory].map(([name, icon]) => (
+                <article className="tech-card" key={name}>
+                  <img
+                    src={`/icons/${icon}`}
+                    alt=""
+                  />
+                  <div><strong>{name}</strong><span>Production toolkit</span></div>
+                  <i aria-hidden="true" />
+                </article>
+              ))}
+            </div>
+          </div>
+          <div className="stack-principles">
+            <span>System design</span><i />
+            <span>Event-driven architecture</span><i />
+            <span>Testing & observability</span><i />
+            <span>CI/CD</span><i />
+            <span>Performance engineering</span>
+          </div>
+        </section>
+
         <section className="experience section" id="experience">
           <div className="section-intro compact">
-            <div><span className="section-number">02</span><p>Experience</p></div>
+            <div><span className="section-number">03</span><p>Experience</p></div>
             <h2>Production engineering, measured in outcomes.</h2>
+          </div>
+          <div className="experience-summary">
+            <div><strong>5+ years</strong><span>production engineering</span></div>
+            <div><strong>3 companies</strong><span>banking and enterprise systems</span></div>
+            <div><strong>3 awards</strong><span>technical excellence and innovation</span></div>
+            <div><strong>5 engineers</strong><span>mentored on architecture and TDD</span></div>
           </div>
           <div className="timeline">
             {roles.map((role, index) => (
@@ -431,6 +543,10 @@ export default function App() {
                 <div className="role-heading">
                   <p>{role.period}</p><h3>{role.role}</h3><span>{role.company}</span>
                   <p className="role-summary">{role.summary}</p>
+                  <p className="role-scope">{role.scope}</p>
+                  <ul className="role-highlights">
+                    {role.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
+                  </ul>
                   {role.awards.length > 0 && <div className="awards">{role.awards.map((award) => <b key={award}>◆ {award}</b>)}</div>}
                 </div>
                 <div className="impact-list">
@@ -447,7 +563,7 @@ export default function App() {
         <section className="about section" id="about">
           <div className="about-grid">
             <div className="about-copy">
-              <div className="section-label"><span className="section-number">03</span><p>About</p></div>
+              <div className="section-label"><span className="section-number">04</span><p>About</p></div>
               <h2>I care about the seam between architecture and experience.</h2>
               <p>Reliable APIs, observable systems, thoughtful interfaces, and deployment paths that do not surprise the next engineer—those details are part of the product.</p>
               <p>After building enterprise software at NAB, IBM, and Capgemini, I am pursuing an MS in Computer Science at Northeastern University and looking for an internship where production judgment is useful from day one.</p>
@@ -478,14 +594,39 @@ export default function App() {
         <section className="contact section" id="contact">
           <NetworkCanvas />
           <div className="contact-inner">
-            <span className="section-number">04</span>
-            <p>Let’s build something dependable.</p>
-            <h2>Looking for an engineer who can work above and below the interface?</h2>
-            <div className="contact-actions">
-              <a className="primary-button" href="mailto:sg.srashtigupta@gmail.com">Email Srashti <Arrow /></a>
-              <a href="https://github.com/srashtigupta-25" target="_blank" rel="noreferrer">GitHub <Arrow /></a>
-              <a href="https://linkedin.com/in/srashti-gupta-07b634151" target="_blank" rel="noreferrer">LinkedIn <Arrow /></a>
+            <div className="contact-copy">
+              <span className="section-number">05</span>
+              <p>Let’s build something dependable.</p>
+              <h2>Start a conversation.</h2>
+              <p className="contact-description">Have an internship opportunity, an engineering challenge, or a product worth making more reliable? Send me a note.</p>
+              <div className="contact-socials">
+                <a href="https://linkedin.com/in/srashti-gupta-07b634151" target="_blank" rel="noreferrer">
+                  <img src="/icons/linkedin.svg" alt="" />
+                  <span><b>LinkedIn</b><small>Professional profile</small></span><Arrow />
+                </a>
+                <a href="https://github.com/srashtigupta-25" target="_blank" rel="noreferrer">
+                  <img src="/icons/github.svg" alt="" />
+                  <span><b>GitHub</b><small>Code and projects</small></span><Arrow />
+                </a>
+              </div>
             </div>
+            <form className="contact-form" onSubmit={handleContactSubmit}>
+              <div className="form-heading"><span>New message</span><i>●</i></div>
+              <label>
+                <span>Name</span>
+                <input name="name" type="text" placeholder="Your name" autoComplete="name" required />
+              </label>
+              <label>
+                <span>Email</span>
+                <input name="email" type="email" placeholder="you@company.com" autoComplete="email" required />
+              </label>
+              <label>
+                <span>Message</span>
+                <textarea name="message" placeholder="What would you like to discuss?" rows="6" required />
+              </label>
+              <button className="primary-button" type="submit">Compose message <Arrow /></button>
+              <small>This opens a prepared email in your default mail app.</small>
+            </form>
           </div>
         </section>
       </main>
