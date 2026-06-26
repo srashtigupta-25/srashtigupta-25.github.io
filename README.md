@@ -1,4 +1,4 @@
-# Srashti Gupta — Software Engineering Portfolio
+# Srashti Gupta: Software Engineering Portfolio
 
 A light, interactive portfolio focused on production engineering experience, measurable impact, and selected systems, cloud, AI, and data projects.
 

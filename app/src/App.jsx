@@ -81,7 +81,7 @@ const roles = [
     company: "NAB",
     logo: "/nab.png",
     role: "Senior Software Engineer",
-    period: "2023 — 2025",
+    period: "2023 to 2025",
     summary:
       "Owned performance, modernization, and developer-experience initiatives across banking platforms.",
     scope: "20+ APIs · 20 microservices · 20+ engineering teams",
@@ -101,7 +101,7 @@ const roles = [
     company: "IBM",
     logo: "/ibm.jpeg",
     role: "Software Engineer",
-    period: "2021 — 2022",
+    period: "2021 to 2022",
     summary:
       "Built event-driven services, automated releases, and shipped full-stack product features.",
     scope: "10+ services · Event-driven architecture · Full-stack delivery",
@@ -121,7 +121,7 @@ const roles = [
     company: "Capgemini",
     logo: "/capgemini.png",
     role: "Software Engineer",
-    period: "2019 — 2021",
+    period: "2019 to 2021",
     summary:
       "Improved enterprise services for clients including Samsung and HughesNet.",
     scope: "14 microservices · Global enterprise clients · Backend performance",
@@ -455,7 +455,7 @@ export default function App() {
               <p className="hero-kicker">Software engineer · AI systems builder</p>
               <h1>Production engineering for <em>AI-powered products.</em></h1>
               <p className="hero-summary">
-                Five-plus years building distributed platforms with Java, Spring Boot, and AWS—now applying that foundation to LLM workflows, multi-agent systems, and serverless AI.
+                Five-plus years building distributed platforms with Java, Spring Boot, and AWS, now applying that foundation to LLM workflows, multi-agent systems, and serverless AI.
               </p>
               <div className="hero-capabilities" aria-label="Core capabilities">
                 <span>Java</span><span>Python</span><span>Spring Boot</span><span>AWS</span><span>LangChain</span><span>LLM Systems</span>
@@ -616,7 +616,7 @@ export default function App() {
             <div className="about-copy">
               <div className="section-label"><span className="section-number">04</span><p>About</p></div>
               <h2>I care about the seam between architecture and experience.</h2>
-              <p>Reliable APIs, observable systems, thoughtful interfaces, and deployment paths that do not surprise the next engineer—those details are part of the product.</p>
+              <p>Reliable APIs, observable systems, thoughtful interfaces, and deployment paths that do not surprise the next engineer are part of the product.</p>
               <p>After building enterprise software at NAB, IBM, and Capgemini, I am pursuing an MS in Computer Science at Northeastern University and looking for an internship where production judgment is useful from day one.</p>
               <a className="inline-link" href="/resume.pdf" target="_blank" rel="noreferrer">Read the full résumé <Arrow /></a>
             </div>
