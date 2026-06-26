@@ -50,15 +50,16 @@ const projects = [
     theme: "green",
   },
   {
-    id: "warehouse",
+    id: "autopsy",
     index: "04",
-    label: "Data engineering",
-    title: "Streaming Analytics Warehouse",
+    label: "AI reliability · Hackathon",
+    title: "Autopsy Lab",
     description:
-      "A Dockerized ETL pipeline and partitioned star schema for exploring multi-year viewing patterns across streaming transaction data.",
-    outcomes: ["98K+ records", "3+ years of trends", "Reproducible ETL"],
-    stack: ["R", "MySQL", "Docker", "ETL"],
-    github: "https://github.com/srashtigupta-25/Streaming-Analytics-Data-Warehouse",
+      "An AI incident reconstruction engine built in four hours at the Madison AI Hackathon, then hardened into a deployable product that turns raw logs into evidence-backed timelines, root-cause analysis, and remediation plans.",
+    outcomes: ["Built in 4 hours", "Structured LLM output", "Tested production deployment"],
+    stack: ["Python", "FastAPI", "Groq", "Llama 3.3", "Next.js", "TypeScript", "Pydantic"],
+    live: "https://autopsy-lab.vercel.app",
+    github: "https://github.com/srashtigupta-25/hackathon-1",
     theme: "violet",
   },
 ];
@@ -301,14 +302,20 @@ function ProjectVisual({ project }) {
   }
 
   return (
-    <div className="visual data-visual">
-      <div className="data-head"><span>stream_analytics.sql</span><b>98,000+ rows</b></div>
-      <div className="data-bars">
-        {[42, 68, 51, 82, 65, 96, 73, 88, 61, 100, 76, 91].map((height, index) => (
-          <i key={index} style={{ "--height": `${height}%` }} />
-        ))}
+    <div className="visual autopsy-visual">
+      <div className="autopsy-head"><span>incident.report.json</span><b>ANALYSIS COMPLETE</b></div>
+      <div className="autopsy-panel">
+        <div className="severity-card"><span>SEVERITY</span><strong>HIGH</strong></div>
+        <div className="cause-card">
+          <span>LIKELY ROOT CAUSE</span>
+          <strong>Database connection pool exhausted during retry storm</strong>
+        </div>
+        <div className="evidence-list">
+          <span><i />14:03:12 · HTTP 503 begins</span>
+          <span><i />14:03:18 · Pool timeout detected</span>
+          <span><i />14:04:01 · Retry volume amplifies</span>
+        </div>
       </div>
-      <div className="data-years"><span>2023</span><span>2024</span><span>2025</span></div>
     </div>
   );
 }
@@ -342,7 +349,7 @@ function CommandPalette({ open, onClose }) {
 }
 
 export default function App() {
-  const [activeProject, setActiveProject] = useState(1);
+  const [activeProject, setActiveProject] = useState(0);
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("work");
@@ -456,12 +463,12 @@ export default function App() {
           <div className="section-intro">
             <div><span className="section-number">01</span><p>Selected work</p></div>
             <h2>AI products backed by real engineering depth.</h2>
-            <p className="section-copy">Sage and Alpha Sign lead the story: LLM orchestration, grounded research, cloud architecture, and production-minded delivery.</p>
+            <p className="section-copy">Alpha Sign, Sage, and Autopsy Lab show multi-agent orchestration, grounded research, AI reliability, and production-minded delivery.</p>
           </div>
 
           <div className="project-shell">
             <div className="project-tabs" role="tablist" aria-label="Projects">
-              {[projects[1], projects[0], projects[2], projects[3]].map((project, index) => (
+              {[projects[0], projects[1], projects[3], projects[2]].map((project) => (
                 <button
                   className={currentProject.id === project.id ? "active" : ""}
                   key={project.id}
