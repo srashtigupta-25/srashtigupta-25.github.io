@@ -11,7 +11,7 @@ const navItems = [
 const projects = [
   {
     id: "alpha",
-    index: "02",
+    index: "01",
     label: "Multi-agent AI · Hackathon",
     title: "Alpha Sign",
     description:
@@ -25,7 +25,7 @@ const projects = [
   },
   {
     id: "sage",
-    index: "01",
+    index: "02",
     label: "Production GenAI · AWS",
     title: "Sage Research Synthesizer",
     description:
@@ -38,7 +38,7 @@ const projects = [
   },
   {
     id: "server",
-    index: "03",
+    index: "04",
     label: "Systems engineering",
     title: "Adaptive Concurrent Web Server",
     description:
@@ -51,7 +51,7 @@ const projects = [
   },
   {
     id: "autopsy",
-    index: "04",
+    index: "03",
     label: "AI reliability · Hackathon",
     title: "Autopsy Lab",
     description:
@@ -60,6 +60,18 @@ const projects = [
     stack: ["Python", "FastAPI", "Groq", "Llama 3.3", "Next.js", "TypeScript", "Pydantic"],
     live: "https://autopsy-lab.vercel.app",
     github: "https://github.com/srashtigupta-25/hackathon-1",
+    theme: "violet",
+  },
+  {
+    id: "warehouse",
+    index: "05",
+    label: "Data engineering",
+    title: "Streaming Analytics Warehouse",
+    description:
+      "A Dockerized ETL pipeline and year-partitioned MySQL star schema for analyzing multi-year streaming viewership patterns across nearly 100K transaction records.",
+    outcomes: ["98,472 records", "13 dimensions", "34% Q4 increase surfaced"],
+    stack: ["R", "MySQL", "Docker", "ETL", "Star Schema", "Data Modeling"],
+    github: "https://github.com/srashtigupta-25/Streaming-Analytics-Data-Warehouse",
     theme: "violet",
   },
 ];
@@ -301,21 +313,35 @@ function ProjectVisual({ project }) {
     );
   }
 
-  return (
-    <div className="visual autopsy-visual">
-      <div className="autopsy-head"><span>incident.report.json</span><b>ANALYSIS COMPLETE</b></div>
-      <div className="autopsy-panel">
-        <div className="severity-card"><span>SEVERITY</span><strong>HIGH</strong></div>
-        <div className="cause-card">
-          <span>LIKELY ROOT CAUSE</span>
-          <strong>Database connection pool exhausted during retry storm</strong>
-        </div>
-        <div className="evidence-list">
-          <span><i />14:03:12 · HTTP 503 begins</span>
-          <span><i />14:03:18 · Pool timeout detected</span>
-          <span><i />14:04:01 · Retry volume amplifies</span>
+  if (project.id === "autopsy") {
+    return (
+      <div className="visual autopsy-visual">
+        <div className="autopsy-head"><span>incident.report.json</span><b>ANALYSIS COMPLETE</b></div>
+        <div className="autopsy-panel">
+          <div className="severity-card"><span>SEVERITY</span><strong>HIGH</strong></div>
+          <div className="cause-card">
+            <span>LIKELY ROOT CAUSE</span>
+            <strong>Database connection pool exhausted during retry storm</strong>
+          </div>
+          <div className="evidence-list">
+            <span><i />14:03:12 · HTTP 503 begins</span>
+            <span><i />14:03:18 · Pool timeout detected</span>
+            <span><i />14:04:01 · Retry volume amplifies</span>
+          </div>
         </div>
       </div>
+    );
+  }
+
+  return (
+    <div className="visual data-visual">
+      <div className="data-head"><span>stream_analytics.sql</span><b>98,472 rows</b></div>
+      <div className="data-bars">
+        {[42, 68, 51, 82, 65, 96, 73, 88, 61, 100, 76, 91].map((height, index) => (
+          <i key={index} style={{ "--height": `${height}%` }} />
+        ))}
+      </div>
+      <div className="data-years"><span>2022</span><span>2023</span><span>2025</span></div>
     </div>
   );
 }
@@ -463,12 +489,12 @@ export default function App() {
           <div className="section-intro">
             <div><span className="section-number">01</span><p>Selected work</p></div>
             <h2>AI products backed by real engineering depth.</h2>
-            <p className="section-copy">Alpha Sign, Sage, and Autopsy Lab show multi-agent orchestration, grounded research, AI reliability, and production-minded delivery.</p>
+            <p className="section-copy">Alpha Sign, Sage, Autopsy Lab, Adaptive Server, and Streaming Analytics show AI orchestration, cloud systems, performance engineering, and data depth.</p>
           </div>
 
           <div className="project-shell">
             <div className="project-tabs" role="tablist" aria-label="Projects">
-              {[projects[0], projects[1], projects[3], projects[2]].map((project) => (
+              {[projects[0], projects[1], projects[3], projects[2], projects[4]].map((project) => (
                 <button
                   className={currentProject.id === project.id ? "active" : ""}
                   key={project.id}
