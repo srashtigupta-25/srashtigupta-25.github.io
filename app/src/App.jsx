@@ -690,29 +690,6 @@ export default function App() {
               </div>
             </article>
           </div>
-          <div className="timeline">
-            {roles.map((role, index) => (
-              <article className={`role ${activeExperience === index ? "active" : ""}`} key={role.company} onFocus={() => setActiveExperience(index)} onMouseEnter={() => setActiveExperience(index)} tabIndex={0}>
-                <div className="role-index"><span>0{index + 1}</span><i /></div>
-                <div className="company-mark"><img src={role.logo} alt={`${role.company} logo`} /></div>
-                <div className="role-heading">
-                  <p>{role.period}</p><h3>{role.role}</h3><span>{role.company}</span>
-                  <p className="role-summary">{role.summary}</p>
-                  <p className="role-scope">{role.scope}</p>
-                  <ul className="role-highlights">
-                    {role.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
-                  </ul>
-                  {role.awards.length > 0 && <div className="awards">{role.awards.map((award) => <b key={award}>◆ {award}</b>)}</div>}
-                </div>
-                <div className="impact-list">
-                  {role.impact.map(([metric, text]) => (
-                    <div key={metric + text}><strong>{metric}</strong><span>{text}</span></div>
-                  ))}
-                  <div className="role-stack">{role.stack.map((item) => <span key={item}>{item}</span>)}</div>
-                </div>
-              </article>
-            ))}
-          </div>
         </section>
 
         <section className="recommendations section" id="recommendations">
