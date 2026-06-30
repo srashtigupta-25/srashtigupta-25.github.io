@@ -440,7 +440,9 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("work");
   const [activeTechCategory, setActiveTechCategory] = useState("AI & LLM engineering");
+  const [activeExperience, setActiveExperience] = useState(0);
   const currentProject = projects[activeProject];
+  const selectedRole = roles[activeExperience];
 
   const handleContactSubmit = (event) => {
     event.preventDefault();
@@ -646,9 +648,51 @@ export default function App() {
             <div><strong>3 awards</strong><span>technical excellence and innovation</span></div>
             <div><strong>5 engineers</strong><span>mentored on architecture and TDD</span></div>
           </div>
+          <div className="experience-showcase">
+            <div className="experience-selector" role="tablist" aria-label="Experience highlights">
+              {roles.map((role, index) => (
+                <button
+                  className={activeExperience === index ? "active" : ""}
+                  key={role.company}
+                  onClick={() => setActiveExperience(index)}
+                  onFocus={() => setActiveExperience(index)}
+                  onMouseEnter={() => setActiveExperience(index)}
+                  role="tab"
+                  aria-selected={activeExperience === index}
+                >
+                  <span>0{index + 1}</span>
+                  <img src={role.logo} alt="" />
+                  <b>{role.company}</b>
+                  <small>{role.period}</small>
+                </button>
+              ))}
+            </div>
+            <article className="experience-spotlight" key={selectedRole.company}>
+              <div className="spotlight-heading">
+                <div className="spotlight-logo"><img src={selectedRole.logo} alt={`${selectedRole.company} logo`} /></div>
+                <div>
+                  <span>{selectedRole.period}</span>
+                  <h3>{selectedRole.role}</h3>
+                  <p>{selectedRole.company}</p>
+                </div>
+              </div>
+              <p className="spotlight-summary">{selectedRole.summary}</p>
+              <div className="spotlight-impact">
+                {selectedRole.impact.map(([metric, text]) => (
+                  <div key={metric + text}><strong>{metric}</strong><span>{text}</span></div>
+                ))}
+              </div>
+              <ul className="spotlight-highlights">
+                {selectedRole.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
+              </ul>
+              <div className="spotlight-stack">
+                {selectedRole.stack.map((item) => <span key={item}>{item}</span>)}
+              </div>
+            </article>
+          </div>
           <div className="timeline">
             {roles.map((role, index) => (
-              <article className="role" key={role.company}>
+              <article className={`role ${activeExperience === index ? "active" : ""}`} key={role.company} onFocus={() => setActiveExperience(index)} onMouseEnter={() => setActiveExperience(index)} tabIndex={0}>
                 <div className="role-index"><span>0{index + 1}</span><i /></div>
                 <div className="company-mark"><img src={role.logo} alt={`${role.company} logo`} /></div>
                 <div className="role-heading">
