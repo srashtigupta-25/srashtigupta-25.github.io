@@ -198,32 +198,54 @@ const recommendations = [
     title: "Vice President, NAB",
     relation: "Direct manager",
     photo: "/piyush.jpeg",
+    focus: ["Backend APIs", "Ownership", "Secure systems"],
     quote:
-      "I've had the privilege of working with Srashti for the past two years, and she has consistently proven herself as an exceptionally capable backend engineer. With expertise in Java 17, Spring Boot, and microservices, she has designed and delivered high-performance APIs that are core to our platform's success. Srashti owns the complete development lifecycle, from translating business requirements into technical designs to overseeing deployment.",
+      "Srashti owns the complete development lifecycle, from translating business needs into technical designs to deploying secure, high-performance APIs.",
+    fullQuote: [
+      "I've had the privilege of working with Srashti for the past two years, and she has consistently proven herself as an exceptionally capable backend engineer. With expertise in Java 17, Spring Boot, and microservices, she has designed and delivered high-performance APIs that are core to our platform's success.",
+      "Srashti owns the complete development lifecycle, from translating business requirements into technical designs, implementing scalable and secure solutions, to overseeing deployments and monitoring performance. She has strengthened our systems with robust authentication protocols, token management, and secure API integrations, while optimizing PostgreSQL queries and improving API response times.",
+      "What sets Srashti apart is her ownership mindset, foresight in anticipating challenges, and clear communication with stakeholders. She delivers not only reliable solutions but also long-term architectural improvements. Any team seeking a technically strong, proactive, and dependable backend developer would be fortunate to have her.",
+    ],
   },
   {
     name: "Anil Rawat",
     title: "VP, Sr Engineer II, NAB India",
     relation: "Senior to Srashti",
     photo: "/anil.jpeg",
+    focus: ["Leadership", "Java", "Docker"],
     quote:
       "Srashti is a talented and driven professional with exceptional skills in Java, Node.js, and Docker. Her leadership, creativity, and commitment to excellence make her stand out in any team. She has the rare ability to turn complex challenges into impactful solutions.",
+    fullQuote: [
+      "Srashti is a talented and driven professional with exceptional skills in Java, Node.js, and Docker. Her leadership, creativity, and commitment to excellence make her stand out in any team. She has the rare ability to turn complex challenges into impactful solutions.",
+    ],
   },
   {
     name: "Anuj Agarwal",
     title: "Leader, Solution Designer, Vanguard Australia",
     relation: "Technical manager",
     photo: "/anuj.jpeg",
+    focus: ["Code quality", "Agile delivery", "Testing"],
     quote:
-      "I have worked with Srashti as her technical manager and lead. She joined my team fresh out of college and quickly became one of the most reliable engineers. Her ability to learn quickly, take ownership, and deliver quality work consistently impressed me throughout our time working together.",
+      "Srashti learned fast, delivered quality work on time, and strengthened code quality through coverage, test frameworks, and bug fixes.",
+    fullQuote: [
+      "I have worked with Srashti as her technical manager and lead. She joined my team fresh out of college and was able to learn and deliver quickly. She was quick in grasping the corporate work culture, including Agile practices, project methodologies, work ethics, and environment.",
+      "Due to her good analytical skills, she quickly understood the assigned modules and helped us improve quality metrics of our code by enhancing code coverage, developing test frameworks, and contributing to bug fixes. Srashti demonstrated good communication, strong analytical and technical skills, and delivered all her tasks with quality and on time.",
+      "Her positive attitude and good team skills helped her gel and become an integral part of the team. She always showed keen interest in learning and working on challenging tasks. All the best, Srashti. Keep doing the good work.",
+    ],
   },
   {
     name: "Kamal Verma",
     title: "Senior Analyst, Accenture",
     relation: "Team colleague",
     photo: "/kamal.jpeg",
+    focus: ["Testing", "Debugging", "Team culture"],
     quote:
-      "I rarely come across real talents who stand out like Srashti. Her ability to find bugs like a spec of dust in a crystal is exceptional. No matter how difficult the task, she made it easy with her immense knowledge, logical capabilities, and hard work.",
+      "Srashti stood out for her testing discipline, bug-finding ability, technical logic, hard work, and warmth as a teammate.",
+    fullQuote: [
+      "I rarely come across real talents who stand out like Srashti. I had the pleasure of working with her for three years at Altran, formerly known as Aricent Technologies, collaborating on a Web Components development and testing project.",
+      "Srashti's ability to test the application and find bugs as small as a speck of dust in a crystal was exceptional. No matter how difficult the task, Srashti made it easy with her immense knowledge, logical capabilities, and hard work.",
+      "As a human being, she is warm and makes everyone comfortable around her in the team. I will conclude by saying, \"I was lucky enough to have the privilege of working with her in a team.\"",
+    ],
   },
 ];
 
@@ -655,11 +677,27 @@ export default function App() {
             <h2>Trusted by managers and teammates.</h2>
             <p className="section-copy">A few words from people who worked directly with me across engineering teams, delivery ownership, and production systems.</p>
           </div>
+          <div className="recommendation-proof" aria-label="Recommendation highlights">
+            <span><b>4</b> senior voices</span>
+            <span><b>3</b> company contexts</span>
+            <span><b>1</b> consistent signal: ownership</span>
+          </div>
           <div className="recommendation-grid">
             {recommendations.map((recommendation) => (
               <article className="recommendation-card" key={recommendation.name}>
                 <span className="quote-mark" aria-hidden="true">"</span>
-                <p>{recommendation.quote}</p>
+                <div className="recommendation-content">
+                  <p className="recommendation-quote">{recommendation.quote}</p>
+                  <div className="recommendation-tags">
+                    {recommendation.focus.map((item) => <span key={item}>{item}</span>)}
+                  </div>
+                  <details className="recommendation-details">
+                    <summary>Read full recommendation</summary>
+                    <div>
+                      {recommendation.fullQuote.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                    </div>
+                  </details>
+                </div>
                 <div className="recommendation-person">
                   <img src={recommendation.photo} alt={recommendation.name} />
                   <div>
