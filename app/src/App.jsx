@@ -4,6 +4,7 @@ const navItems = [
   ["work", "Work"],
   ["stack", "Tech Stack"],
   ["experience", "Experience"],
+  ["recommendations", "Recommendations"],
   ["about", "About"],
   ["contact", "Contact"],
 ];
@@ -189,6 +190,41 @@ const techCategories = {
   ],
 };
 
+const recommendations = [
+  {
+    name: "Piyush Joshi",
+    title: "Vice President, NAB",
+    relation: "Direct manager",
+    photo: "/piyush.jpeg",
+    quote:
+      "I've had the privilege of working with Srashti for the past two years, and she has consistently proven herself as an exceptionally capable backend engineer. With expertise in Java 17, Spring Boot, and microservices, she has designed and delivered high-performance APIs that are core to our platform's success. Srashti owns the complete development lifecycle, from translating business requirements into technical designs to overseeing deployment.",
+  },
+  {
+    name: "Anil Rawat",
+    title: "VP, Sr Engineer II, NAB India",
+    relation: "Senior to Srashti",
+    photo: "/anil.jpeg",
+    quote:
+      "Srashti is a talented and driven professional with exceptional skills in Java, Node.js, and Docker. Her leadership, creativity, and commitment to excellence make her stand out in any team. She has the rare ability to turn complex challenges into impactful solutions.",
+  },
+  {
+    name: "Anuj Agarwal",
+    title: "Leader, Solution Designer, Vanguard Australia",
+    relation: "Technical manager",
+    photo: "/anuj.jpeg",
+    quote:
+      "I have worked with Srashti as her technical manager and lead. She joined my team fresh out of college and quickly became one of the most reliable engineers. Her ability to learn quickly, take ownership, and deliver quality work consistently impressed me throughout our time working together.",
+  },
+  {
+    name: "Kamal Verma",
+    title: "Senior Analyst, Accenture",
+    relation: "Team colleague",
+    photo: "/kamal.jpeg",
+    quote:
+      "I rarely come across real talents who stand out like Srashti. Her ability to find bugs like a spec of dust in a crystal is exceptional. No matter how difficult the task, she made it easy with her immense knowledge, logical capabilities, and hard work.",
+  },
+];
+
 function Arrow({ direction = "up" }) {
   return <span aria-hidden="true">{direction === "down" ? "↓" : "↗"}</span>;
 }
@@ -366,7 +402,7 @@ function CommandPalette({ open, onClose }) {
             </a>
           ))}
           <a href="/resume.pdf" target="_blank" rel="noreferrer" onClick={onClose}>
-            <span>06</span><b>Open résumé</b><kbd>↗</kbd>
+            <span>07</span><b>Open résumé</b><kbd>↗</kbd>
           </a>
         </div>
       </div>
@@ -611,10 +647,34 @@ export default function App() {
           </div>
         </section>
 
+        <section className="recommendations section" id="recommendations">
+          <div className="section-intro">
+            <div><span className="section-number">04</span><p>Recommendations</p></div>
+            <h2>Trusted by managers and teammates.</h2>
+            <p className="section-copy">A few words from people who worked directly with me across engineering teams, delivery ownership, and production systems.</p>
+          </div>
+          <div className="recommendation-grid">
+            {recommendations.map((recommendation) => (
+              <article className="recommendation-card" key={recommendation.name}>
+                <span className="quote-mark" aria-hidden="true">"</span>
+                <p>{recommendation.quote}</p>
+                <div className="recommendation-person">
+                  <img src={recommendation.photo} alt={recommendation.name} />
+                  <div>
+                    <strong>{recommendation.name}</strong>
+                    <span>{recommendation.title}</span>
+                    <small>{recommendation.relation}</small>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section className="about section" id="about">
           <div className="about-grid">
             <div className="about-copy">
-              <div className="section-label"><span className="section-number">04</span><p>About</p></div>
+              <div className="section-label"><span className="section-number">05</span><p>About</p></div>
               <h2>I care about the seam between architecture and experience.</h2>
               <p>Reliable APIs, observable systems, thoughtful interfaces, and deployment paths that do not surprise the next engineer are part of the product.</p>
               <p>After building enterprise software at NAB, IBM, and Capgemini, I am pursuing an MS in Computer Science at Northeastern University and looking for an internship where production judgment is useful from day one.</p>
@@ -646,7 +706,7 @@ export default function App() {
           <NetworkCanvas />
           <div className="contact-inner">
             <div className="contact-copy">
-              <span className="section-number">05</span>
+              <span className="section-number">06</span>
               <p>Let’s build something dependable.</p>
               <h2>Start a conversation.</h2>
               <p className="contact-description">Have an internship opportunity, an engineering challenge, or a product worth making more reliable? Send me a note.</p>
