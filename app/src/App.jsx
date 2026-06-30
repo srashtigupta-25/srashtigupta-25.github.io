@@ -20,7 +20,7 @@ const projects = [
     description:
       "A team-built LLM application where four specialist agents turn one ticker into narrative research, quantitative signals, regime analysis, and an executive report. I owned the Narrative/News Agent and co-developed the LangChain/LangGraph agent layer.",
     outcomes: ["Owned Narrative/News Agent", "4-agent workflow", "Co-built LangChain orchestration"],
-    stack: ["Python", "LangChain", "LangGraph", "LLM APIs", "Next.js", "SSE"],
+    stack: ["Python", "LangChain", "LangGraph", "LLM APIs", "Next.js", "TypeScript", "SSE", "Multi-agent AI"],
     live: "https://alpha-sign-zeta.vercel.app",
     github: "https://github.com/Dankguy17/AlphaSign",
     repositoryLabel: "Team Repository",
@@ -34,7 +34,7 @@ const projects = [
     description:
       "A production-style serverless LLM system built in Java that grounds research in live web data, runs three Claude threads in parallel, and returns a structured brief in under 45 seconds.",
     outcomes: ["Brief in <45 seconds", "60% faster through parallelism", "3 grounded LLM research threads"],
-    stack: ["Java 25", "Amazon Bedrock", "Claude", "AWS Lambda", "Step Functions", "Tavily", "DynamoDB"],
+    stack: ["Java", "Amazon Bedrock", "Claude", "AWS Lambda", "Step Functions", "Tavily", "DynamoDB", "CloudFront"],
     live: "https://d1kbvlvilht945.cloudfront.net",
     github: "https://github.com/srashtigupta-25/sage-research-synthesizer",
     theme: "coral",
@@ -47,7 +47,7 @@ const projects = [
     description:
       "A multithreaded Rust server with an adaptive worker pool designed to stay responsive when request traffic becomes bursty.",
     outcomes: ["40% lower P99 latency", "31,725 requests/sec", "1.04 ms P99"],
-    stack: ["Rust", "Python", "Concurrency", "Benchmarking"],
+    stack: ["Rust", "Python", "Concurrency", "Adaptive Worker Pool", "MPSC Channel", "Benchmarking"],
     github: "https://github.com/cs5600-sp26/project-webserver-team0100",
     caseStudy: "/StreetLegal-Webserver-presentation.pdf",
     theme: "green",
@@ -60,7 +60,7 @@ const projects = [
     description:
       "An AI incident reconstruction engine built in four hours at the Madison AI Hackathon, then hardened into a deployable product that turns raw logs into evidence-backed timelines, root-cause analysis, and remediation plans.",
     outcomes: ["Built in 4 hours", "Structured LLM output", "Tested production deployment"],
-    stack: ["Python", "FastAPI", "Groq", "Llama 3.3", "Next.js", "TypeScript", "Pydantic"],
+    stack: ["Python", "FastAPI", "Groq", "Llama 3.3", "Next.js", "TypeScript", "Pydantic", "JSON Export"],
     live: "https://autopsy-lab.vercel.app",
     github: "https://github.com/srashtigupta-25/hackathon-1",
     theme: "violet",
@@ -73,7 +73,7 @@ const projects = [
     description:
       "A Dockerized ETL pipeline and year-partitioned MySQL star schema for analyzing multi-year streaming viewership patterns across nearly 100K transaction records.",
     outcomes: ["98,472 records", "13 dimensions", "34% Q4 increase surfaced"],
-    stack: ["R", "MySQL", "Docker", "ETL", "Star Schema", "Data Modeling"],
+    stack: ["R", "MySQL", "Docker", "ETL", "Star Schema", "Data Modeling", "Data Validation", "Analytics"],
     github: "https://github.com/srashtigupta-25/Streaming-Analytics-Data-Warehouse",
     theme: "violet",
   },
