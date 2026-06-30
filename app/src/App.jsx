@@ -9,6 +9,8 @@ const navItems = [
   ["contact", "Contact"],
 ];
 
+const resumeUrl = "/resume.pdf?v=20260630-final";
+
 const projects = [
   {
     id: "alpha",
@@ -401,7 +403,7 @@ function CommandPalette({ open, onClose }) {
               <span>0{index + 1}</span><b>{label}</b><kbd>↵</kbd>
             </a>
           ))}
-          <a href="/resume.pdf" target="_blank" rel="noreferrer" onClick={onClose}>
+          <a href={resumeUrl} target="_blank" rel="noreferrer" onClick={onClose}>
             <span>07</span><b>Open résumé</b><kbd>↗</kbd>
           </a>
         </div>
@@ -476,7 +478,7 @@ export default function App() {
         </nav>
         <div className="header-actions">
           <button className="command-button" onClick={() => setPaletteOpen(true)}><span>Search</span><kbd>⌘ K</kbd></button>
-          <a className="resume-button" href="/resume.pdf" target="_blank" rel="noreferrer">Résumé <Arrow /></a>
+          <a className="resume-button" href={resumeUrl} target="_blank" rel="noreferrer">Résumé <Arrow /></a>
           <button className={`menu-toggle ${menuOpen ? "open" : ""}`} aria-label="Toggle navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen((value) => !value)}><span /><span /></button>
         </div>
       </header>
@@ -678,7 +680,7 @@ export default function App() {
               <h2>I care about the seam between architecture and experience.</h2>
               <p>Reliable APIs, observable systems, thoughtful interfaces, and deployment paths that do not surprise the next engineer are part of the product.</p>
               <p>After building enterprise software at NAB, IBM, and Capgemini, I am pursuing an MS in Computer Science at Northeastern University and looking for an internship where production judgment is useful from day one.</p>
-              <a className="inline-link" href="/resume.pdf" target="_blank" rel="noreferrer">Read the full résumé <Arrow /></a>
+              <a className="inline-link" href={resumeUrl} target="_blank" rel="noreferrer">Read the full résumé <Arrow /></a>
             </div>
             <div className="about-console">
               <div className="console-head"><span /><span /><span /><b>capabilities.json</b></div>
